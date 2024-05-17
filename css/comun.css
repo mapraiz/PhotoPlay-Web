@@ -1,8 +1,10 @@
 
 
-.radio-canada-big-uniquifier {
-  font-family: "Radio Canada Big", sans-serif;
+
+.jaro {
+  font-family: "Jaro", sans-serif;
   font-optical-sizing: auto;
-  font-weight: <weight>;
+  font-weight: 400;
   font-style: normal;
 }
+
