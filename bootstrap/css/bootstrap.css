@@ -6077,6 +6077,9 @@ button.close {
 .bg-primary {
   background-color: #007bff !important;
 }
+.bg-custom-1{
+  background-color: #685bd9 !important;
+}
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
