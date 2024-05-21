@@ -1,23 +1,21 @@
-bbdd.php
+
 
 <?php
     function connect_database()
     {
-        $db = “(DESCRIPTION=(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.1.34)(PORT = 1521)))(CONNECT_DATA=(SID=orcl)))” ;
+        $username = 'your_username';
+        $password = 'your_password';
+        $connection_string = 'localhost/XE';
 
-        if ($c=OCILogon(“system”, “your database password“, $db)) {
-        
-            echo “Successfully connected to Oracle.\n”;
-            
-            OCILogoff($c);
-        
-        } else {
-        
-            $err = OCIError();
-            
-            echo “Connection failed.” . $err[text];
-        
+        $conn = oci_connect($username, $password, $connection_string);
+
+        if (!$conn) {
+            $error = oci_error();
+            echo "Oracle connection error: " . $error['message'];
+            exit;
         }
+
+        echo "Connected to Oracle!";
     }
 
     
@@ -27,11 +25,11 @@ bbdd.php
     function get_juegos()
     {
         
-        $mysqli = connect_database();
+        $oci = connect_database();
         
         $sql = "SELECT * FROM Juego";
-        $sentencia = $mysqli->prepare($sql);
-        if(!$sentencia)
+        $sentencia = oci_parse($oci, $sql);
+        if(!oci_execute($sentencia))
         {
             echo "Fallo en la preparación de la sentencia: ".$mysqli->errno;
         }
