@@ -3,9 +3,9 @@
 <?php
     function connect_database()
     {
-        $username = 'your_username';
-        $password = 'your_password';
-        $connection_string = 'localhost/XE';
+        $username = 'photoplay';
+        $password = 'almi123';
+        $connection_string = '100.28.90.231:1521/ORCLCDB';
 
         $conn = oci_connect($username, $password, $connection_string);
 
