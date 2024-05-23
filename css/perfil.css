@@ -4,6 +4,12 @@
     border-radius: 10px;
     padding:10px;
 }
+#editUsername{
+    margin-left:3%;
+}
+#usernameEdit{
+    margin-top: 10px;
+}
 
 
 .score-row{
