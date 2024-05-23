@@ -26,9 +26,51 @@ h2,h3{
   font-style: normal;
 }
 
-.footer{
-  background-color: #685bd9;
-  color:white;
-  
+body {
+  font-family: 'Jaro', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
 }
 
+.navbar {
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+.navbar-brand img {
+  width: 100px;
+  height: auto;
+}
+
+.navbar-nav .nav-item .nav-link {
+  font-size: 1.5rem;
+}
+
+.text-white {
+  color: #fff !important;
+}
+
+.bg-dark {
+  background-color: #343a40 !important;
+}
+
+.bg-sucess {
+  background-color: #28a745 !important;
+}
+
+.footer {
+  padding: 1rem 0;
+  background-color: #685bd9;
+  color:white;
+}
+
+.footer-links {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.footer-links li {
+  display: inline;
+  margin: 0 10px;
+}
