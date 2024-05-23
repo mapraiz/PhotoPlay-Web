@@ -28,19 +28,25 @@
         if(!oci_execute($sentencia))
         {
             echo "Fallo en la preparación de la sentencia: ".$oci->errno;
+            return false;
         }
 
         $asignar = $sentencia->bind_param("ss", $username, $newUsername);
         if(!$asignar)
         {
             echo "Fallo en la asignacion de parametros ".$oci->errno;
+            return false;
         }
         
         $ejecucion = $sentencia->execute();
         if(!$ejecucion)
         {
             echo "Fallo en la ejecucion: ".$oci->errno;
+            return false;
+        }else{
+            return true;
         }
+
         
         
     }

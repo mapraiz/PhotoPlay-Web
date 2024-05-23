@@ -24,14 +24,15 @@ servicios.php
     $funcion = $_POST['function'];
     if($funcion == "getScoreUsuario")
     {
-        $scores_usuarios = get_juegos();
+        $scores_usuarios = get_scores();
         $scoresUJson = json_encode($scores_usuarios, JSON_UNESCAPED_UNICODE);
         echo $scoresUJson;
-    } else if($funcion == "getJuegosCategoria")
+    } else if($funcion == "changeUsername")
     {
-        $juegos = get_juegos_categoria($_POST['idCategoria']);
-        $juegosJson = json_encode($juegos, JSON_UNESCAPED_UNICODE);
-        echo $juegosJson;
+        if(change_username($_POST['username'],$_POST['newUsername'])){
+            echo true;
+        }
+        
     } else if($funcion == "getNombresJuegosCategoria")
     {
         $juegos = get_titulos_juegos_categoria($_POST['idCategoria']);
