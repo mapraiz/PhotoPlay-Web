@@ -20,6 +20,30 @@
 
     
    
+    function change_username($username, $newUsername){
+        $oci = connect_database();
+        
+        $sql = "UPDATE usuario SET username=? WHERE username=?";
+        $sentencia = oci_parse($oci, $sql);
+        if(!oci_execute($sentencia))
+        {
+            echo "Fallo en la preparación de la sentencia: ".$oci->errno;
+        }
+
+        $asignar = $sentencia->bind_param("ss", $username, $newUsername);
+        if(!$asignar)
+        {
+            echo "Fallo en la asignacion de parametros ".$oci->errno;
+        }
+        
+        $ejecucion = $sentencia->execute();
+        if(!$ejecucion)
+        {
+            echo "Fallo en la ejecucion: ".$oci->errno;
+        }
+        
+        
+    }
 
 
     function get_juegos()
@@ -33,6 +57,7 @@
         {
             echo "Fallo en la preparación de la sentencia: ".$mysqli->errno;
         }
+        
         
         $ejecucion = $sentencia->execute();
         if(!$ejecucion)
