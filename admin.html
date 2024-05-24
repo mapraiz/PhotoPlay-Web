@@ -39,13 +39,71 @@
             <button type="button" class="btn btn-primary btn-sm" id="usersButton">Users</button>
         </div>
 
-        <div class="container-lg" style="background-color: #685bd9; margin-top: 2%; "  id="user-scores">
+        <div class="container-lg" style="background-color: #685bd9; margin-top: 2%;"  id="user-scores">
             <div class="text-center">
-                <h2>Scores</h2>
+                <h2>Users</h2>
                 <hr>
             </div>
-            <div class="table-responsive" id="table-div">
-                <table class="score-table">
+            <div class="container-lg" id="editContainer" style="display: none;">
+                <form class="edit-form">
+                    <div class="form-group">
+                        <label for="score">Score</label>
+                        <input type="text" class="form-control" id="score-edit" aria-describedby="scoreEdit">
+                        
+                      </div>
+                      <div class="form-group">
+                        <label for="scoreFecha">Fecha</label>
+                        <input type="date" class="form-control" id="score-fecha" >
+                      </div>
+                     
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="container user-container">
+                
+                
+                <ul class="userboard" id="userList">
+                    <li class="user-item">
+                        
+                        <span class="user-name">Ruben</span>
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#userScores" aria-expanded="false" aria-controls="userScores">
+                            Expandir
+                        </button>
+                        <div class="collapse" id="userScores">
+                            <ul class="userScores">
+                                <li class="score-item">
+                                    <span class="score">7849239</span>
+                                    <span class="fecha">2004/07/28</span>
+                                    <button type="button" class="btn btn-primary btn-sm" id="scoreButton">Edit</button>
+                                    <button type="button" class="btn btn-primary btn-sm" id="usersButton">Delete</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="user-item">
+                        
+                        <span class="player-name">Ruben</span>
+                        <span class="score">99999999</span>
+                    </li>
+                    <li class="user-item">
+                        
+                        <span class="player-name">Ruben</span>
+                        <span class="score">99999999</span>
+                    </li>
+                    <li class="user-item">
+                        
+                        <span class="player-name">Ruben</span>
+                        <span class="score">99999999</span>
+                    </li>
+                    <li class="user-item">
+                        
+                        <span class="player-name">Ruben</span>
+                        <span class="score">99999999</span>
+                    </li>
+                </ul>
+            </div>
+            
+                <!--<table class="score-table">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Score</th>
@@ -55,7 +113,10 @@
                     <tbody>
                         <tr class="score-row">
                             <td>
-                                prueba
+                                Usuario
+                            </td>
+                            <td>
+                                score
                             </td>
                             <td>
                                 2024/04/6
@@ -63,7 +124,10 @@
                         </tr>
                         <tr class="score-row">
                             <td>
-                                prueba2
+                                Usuario
+                            </td>
+                            <td>
+                                score
                             </td>
                             <td>
                                 2024/04/6
@@ -71,7 +135,10 @@
                         </tr>
                         <tr class="score-row">
                             <td>
-                                prueba3
+                                Usuario
+                            </td>
+                            <td>
+                                score
                             </td>
                             <td>
                                 2024/04/6
@@ -79,16 +146,26 @@
                         </tr>
                         <tr class="score-row">
                             <td>
-                                prueba4
+                                Usuario
+                            </td>
+                            <td>
+                                score
                             </td>
                             <td>
                                 2024/04/6
+                            </td>
+                            <td>
+                                <div class="botonesEditar">
+                                    <button type="button" class="btn btn-primary btn-sm" id="scoreButton">Scores</button>
+                                    <button type="button" class="btn btn-primary btn-sm" id="usersButton">Users</button>
+
+                                </div>
                             </td>
                         </tr>
                     </tbody>
-                </table>
+                </table>-->
 
-            </div>
+            
         </div>
         <hr>
     </div>
