@@ -34,44 +34,53 @@
                                 <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
                                 <?php
-                                session_start();
+session_start();
 
-                                // Inicializar el mensaje de inicio de sesión
-                                $loginMessage = "";
+// Inicializar el mensaje de inicio de sesión
+$loginMessage = "";
 
-                                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                                    $username = $_POST['username'];
-                                    $password = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-                                    // Include the database connection function
-                                    include 'bbdd.php';
+    // Include the database connection function
+    include 'bbdd.php';
 
-                                    // Conexión a la base de datos usando la función definida en bbdd.php
-                                    $connection = connect_database();
+    // Conexión a la base de datos usando la función definida en bbdd.php
+    $connection = connect_database();
 
-                                    // Consulta SQL
-                                    $query = "SELECT * FROM usuario WHERE username = :username AND contrasena = :password";
-                                    $stid = oci_parse($connection, $query);
+    // Consulta SQL
+    $query = "SELECT * FROM usuario WHERE username = :username AND contrasena = :password";
+    $stid = oci_parse($connection, $query);
 
-                                    // Asignar variables
-                                    oci_bind_by_name($stid, ':username', $username);
-                                    oci_bind_by_name($stid, ':password', $password);
+    // Asignar variables
+    oci_bind_by_name($stid, ':username', $username);
+    oci_bind_by_name($stid, ':password', $password);
 
-                                    // Ejecutar la consulta
-                                    oci_execute($stid);
+    // Ejecutar la consulta
+    oci_execute($stid);
 
-                                    // Verificar si hay resultados
-                                    if ($row = oci_fetch_array($stid, OCI_ASSOC)) {
-                                        $_SESSION['username'] = $username;
-                                        $loginMessage = "Login successful";
-                                    } else {
-                                        $loginMessage = "Invalid username or password";
-                                    }
-                                    // Liberar recursos
-                                    oci_free_statement($stid);
-                                    oci_close($connection);
-                                }
-                                ?>
+    // Verificar si hay resultados
+    if ($row = oci_fetch_array($stid, OCI_ASSOC)) {
+        $_SESSION['username'] = $username;
+        // Redirigir al usuario a perfil.php
+        header("Location: perfil.php");
+        exit(); // Importante para asegurar que el script se detenga después de la redirección
+    } else {
+        $loginMessage = "Invalid username or password";
+    }
+    // Liberar recursos
+    oci_free_statement($stid);
+    oci_close($connection);
+}
+?>
+
+
+                                <?php if ($loginMessage === "Login successful"): ?>
+                                    <div class='alert alert-success'><?php echo $loginMessage; ?></div>
+                                <?php elseif ($loginMessage === "Invalid username or password"): ?>
+                                    <div class='alert alert-danger'><?php echo $loginMessage; ?></div>
+                                <?php endif; ?>
 
                                 <form action="" method="post">
                                     <div class="form-outline form-white mb-4">
@@ -103,8 +112,9 @@
                 </div>
             </div>
         </div>
-        </section>
-        <footer class="footer">
+    </section>
+
+    <footer class="footer">
         <div class="row text-center">
             <div class="col-md-8"><p>&copy; PhotoPlay. All rights reserved.</p></div>
             <ul class="list-inline footer-links">
@@ -112,9 +122,9 @@
                 <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/signo-de-twitter.png"></a></li>
                 <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/instagram.png"></a></li>
             </ul>
-            
         </div>
     </footer>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/jquery-3.7.1.min.js"></script>
@@ -122,3 +132,4 @@
 
 </body>
 </html>
+
