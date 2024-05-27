@@ -34,46 +34,50 @@
                                 <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
                                 <?php
-                                    session_start();
+session_start();
 
-                                    // Inicializar el mensaje de inicio de sesión
-                                    $loginMessage = "Login successfull";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-                                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                                        $username = $_POST['username'];
-                                        $password = $_POST['password'];
+    // Configuración de la conexión a la base de datos Oracle
+    $username = 'c##photoplay';
+    $password = 'almi123';
+    $connection_string = '//3.221.255.12:1521/ORCLCDB';
 
-                                        // Include the database connection function
-                                        include 'bbdd.php';
+    // Realizar la conexión a la base de datos Oracle
+    $connection = oci_connect($username, $password, $connection_string);
 
-                                        // Conexión a la base de datos usando la función definida en bbdd.php
-                                        $connection = connect_database();
+    if (!$connection) {
+        $error = oci_error();
+        echo "Error de conexión: " . $error['message'];
+        exit;
+    }
 
-                                        // Consulta SQL
-                                        $query = "SELECT * FROM usuario WHERE username = :username AND contrasena = :password";
-                                        $stid = oci_parse($connection, $query);
+    // Consulta SQL para verificar las credenciales de inicio de sesión
+    $query = "SELECT * FROM usuario WHERE username = :username AND contrasena = :password";
+    $stid = oci_parse($connection, $query);
 
-                                        // Asignar variables
-                                        oci_bind_by_name($stid, ':username', $username);
-                                        oci_bind_by_name($stid, ':password', $password);
+    oci_bind_by_name($stid, ':username', $username);
+    oci_bind_by_name($stid, ':password', $password);
 
-                                        // Ejecutar la consulta
-                                        oci_execute($stid);
+    oci_execute($stid);
 
-                                        // Verificar si hay resultados
-                                        if ($row = oci_fetch_array($stid, OCI_ASSOC)) {
-                                            $_SESSION['username'] = $username;
-                                            // Redirigir al usuario a perfil.php
-                                            header("Location: perfil.html");
-                                            exit(); // Importante para asegurar que el script se detenga después de la redirección
-                                        } else {
-                                            $loginMessage = "Invalid username or password";
-                                        }
-                                        // Liberar recursos
-                                        oci_free_statement($stid);
-                                        oci_close($connection);
-                                    }
-                                    ?>
+    if ($row = oci_fetch_array($stid, OCI_ASSOC)) {
+        $_SESSION['username'] = $username;
+        // Redirigir al usuario a perfil.php
+        header("Location: perfil.html");
+        exit();
+    } else {
+        $loginMessage = "Nombre de usuario o contraseña inválidos";
+    }
+
+    // Liberar recursos
+    oci_free_statement($stid);
+    oci_close($connection);
+}
+?>
+
 
 
                                 <form action="login.php" method="post">
@@ -83,7 +87,7 @@
                                     </div>
 
                                     <div class="form-outline form-white mb-4">
-                                        <input type="contrasena" id="typePasswordX" name="contrasena" class="form-control form-control-lg" required />
+                                        <input type="password" id="typePasswordX" name="password" class="form-control form-control-lg" required />
                                         <label class="form-label" for="typePasswordX">Password</label>
                                     </div>
 
