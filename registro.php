@@ -74,12 +74,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['act
     </footer>
 
     <script>
-        // Incluir el archivo ajax_scripts.js
         $.getScript('ajax_scripts.js', function() {
-            // Una vez cargado el script, continuamos con el resto del código
-            // Script para manejar la inserción de usuario
             $('#insertarUsuarioForm').submit(function(event) {
-                event.preventDefault(); // Evitar el envío por defecto
+                event.preventDefault(); 
 
                 var username = $('#username').val();
                 var contrasena = $('#contrasena').val();
@@ -88,7 +85,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['act
                 insertarUsuario(username, contrasena, admin);
             });
 
-            // Script para obtener estadísticas de usuarios
             $('#obtenerEstadisticasBtn').click(function() {
                 obtenerEstadisticasUsuarios();
             });
