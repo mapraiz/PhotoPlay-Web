@@ -1,12 +1,14 @@
 
 $(document).ready(function(){
 
-    $(".editButton")
+
+    
 
 
 
 
     $(".deleteButton").on("click", function(event){
+        var username=
         console.log("hello");
         swal({
             title:"Estas seguro?",
@@ -20,7 +22,7 @@ $(document).ready(function(){
                 }
 
             }   
-        }).then(value){
+        }).then((value)=>{
             if(value=="confirm"){
                 $.ajax({
                     url: "http://127.0.0.1/PhotoPlay-Web/servicios.php",
@@ -31,6 +33,6 @@ $(document).ready(function(){
                     }
                 });
             }
-        }
+        });
     })
 })
