@@ -32,54 +32,6 @@
                             <div class="mb-md-5 mt-md-4 pb-5">
                                 <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
                                 <p class="text-white-50 mb-5">Please enter your login and password!</p>
-
-                                <?php
-session_start();
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // Configuración de la conexión a la base de datos Oracle
-    $db_username = 'c##photoplay';
-    $db_password = 'almi123';
-    $db_service = '3.221.255.12:1521/ORCLCDB';
-
-    // Realizar la conexión a la base de datos Oracle
-    $connection = oci_connect($db_username, $db_password, $db_service);
-
-    if (!$connection) {
-        $error = oci_error();
-        echo "Error de conexión: " . $error['message'];
-        exit;
-    }
-
-    // Consulta SQL para verificar las credenciales de inicio de sesión
-    $query = "SELECT * FROM usuario WHERE username = :username AND contrasena = :password";
-    $stid = oci_parse($connection, $query);
-
-    oci_bind_by_name($stid, ':username', $username);
-    oci_bind_by_name($stid, ':password', $password);
-
-    oci_execute($stid);
-
-    if ($row = oci_fetch_array($stid, OCI_ASSOC)) {
-        $_SESSION['username'] = $username;
-        // Redirigir al usuario a perfil.php
-        header("Location: perfil.html");
-        exit();
-    } else {
-        $loginMessage = "Nombre de usuario o contraseña inválidos";
-    }
-
-    // Liberar recursos
-    oci_free_statement($stid);
-    oci_close($connection);
-}
-?>
-
-
-
                                 <form action="login.php" method="post">
                                     <div class="form-outline form-white mb-4">
                                         <input type="text" id="typeUsernameX" name="username" class="form-control form-control-lg" required />
@@ -126,11 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/jquery-3.7.1.min.js"></script>
-    //prueba
-    <script src="js/login.js"></script>
-    
-    
-
 </body>
 </html>
 
