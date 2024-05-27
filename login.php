@@ -67,18 +67,11 @@
                                     } else {
                                         $loginMessage = "Invalid username or password";
                                     }
-//prueba
                                     // Liberar recursos
                                     oci_free_statement($stid);
                                     oci_close($connection);
                                 }
                                 ?>
-
-                                <?php if ($loginMessage === "Login successful"): ?>
-                                    <div class='alert alert-success'><?php echo $loginMessage; ?></div>
-                                <?php elseif ($loginMessage === "Invalid username or password"): ?>
-                                    <div class='alert alert-danger'><?php echo $loginMessage; ?></div>
-                                <?php endif; ?>
 
                                 <form action="" method="post">
                                     <div class="form-outline form-white mb-4">
