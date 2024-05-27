@@ -32,6 +32,7 @@
                             <div class="mb-md-5 mt-md-4 pb-5">
                                 <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
                                 <p class="text-white-50 mb-5">Please enter your login and password!</p>
+
                                 <form action="login.php" method="post">
                                     <div class="form-outline form-white mb-4">
                                         <input type="text" id="typeUsernameX" name="username" class="form-control form-control-lg" required />
@@ -45,6 +46,50 @@
 
                                     <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
                                 </form>
+                                <?php
+// Incluir el archivo de conexión a la base de datos
+                                    include 'conexion_bbdd.php';
+
+                                    // Verificar si se envió el formulario
+                                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                        // Obtener los datos del formulario
+                                        $username = $_POST["username"];
+                                        $password = $_POST["password"];
+
+                                        // Conectar a la base de datos
+                                        $conn = connect_database();
+
+                                        // Consulta SQL para verificar la existencia del usuario
+                                        $sql = "SELECT * FROM usuarios WHERE username = :username AND contrasena = :password";
+
+                                        // Preparar la consulta
+                                        $stmt = oci_parse($conn, $sql);
+
+                                        // Vincular parámetros
+                                        oci_bind_by_name($stmt, ":username", $username);
+                                        oci_bind_by_name($stmt, ":password", $password);
+
+                                        // Ejecutar la consulta
+                                        oci_execute($stmt);
+
+                                        // Contar el número de filas devueltas por la consulta
+                                        $row_count = oci_fetch_all($stmt, $rows);
+
+                                        // Cerrar la conexión
+                                        oci_close($conn);
+
+                                        // Verificar si se encontró un usuario con las credenciales proporcionadas
+                                        if ($row_count > 0) {
+                                            // Redirigir a la página de perfil
+                                            header("Location: perfil.html");
+                                            exit();
+                                        } else {
+                                            // Si el usuario no existe, mostrar un mensaje de error o redirigir a otra página
+                                            echo "Usuario o contraseña incorrectos";
+                                        }
+                                    }
+                                    ?>
+
 
                                 <div class="d-flex justify-content-center text-center mt-4 pt-1">
                                     <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
