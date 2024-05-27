@@ -8,8 +8,10 @@ $(document).ready(function(){
 
 
     $(".deleteButton").on("click", function(event){
-        var username=
-        console.log("hello");
+        const myElement=event.target.parentElement;
+        var username=myElement.children[0].innerText;
+        
+       
         swal({
             title:"Estas seguro?",
             text:"No podras revertir el cambio",
