@@ -1,4 +1,3 @@
-servicios.php
 
 <?php
     if(isset($_SERVER['HTTP_ORIGIN']))
