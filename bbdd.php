@@ -3,9 +3,9 @@
 
 function connect_database()
 {
-    $username = 'photoplay';
+    $username = 'c##photoplay';
     $password = 'almi123';
-    $connection_string = '//100.28.90.231:1521/ORCLCDB';  
+    $connection_string = '//3.221.255.12:1521/ORCLCDB';  
 
     $conn = oci_connect($username, $password, $connection_string);
 
