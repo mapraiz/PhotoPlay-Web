@@ -46,50 +46,41 @@
 
                                     <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
                                 </form>
+
                                 <?php
-// Incluir el archivo de conexión a la base de datos
-                                    include 'conexion_bbdd.php';
+                                // Aquí va el código PHP que verifica el login y redirige si es exitoso
+                                include 'bbdd.php';
 
-                                    // Verificar si se envió el formulario
-                                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                        // Obtener los datos del formulario
-                                        $username = $_POST["username"];
-                                        $password = $_POST["password"];
+                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                    $username = $_POST["username"];
+                                    $password = $_POST["password"];
 
-                                        // Conectar a la base de datos
-                                        $conn = connect_database();
+                                    $conn = connect_database();
 
-                                        // Consulta SQL para verificar la existencia del usuario
-                                        $sql = "SELECT * FROM usuarios WHERE username = :username AND contrasena = :password";
+                                    $sql = "SELECT * FROM usuario WHERE username = :username AND contrasena = :password";
 
-                                        // Preparar la consulta
-                                        $stmt = oci_parse($conn, $sql);
+                                    $stmt = oci_parse($conn, $sql);
+                                    oci_bind_by_name($stmt, ":username", $username);
+                                    oci_bind_by_name($stmt, ":password", $password);
+                                    oci_execute($stmt);
 
-                                        // Vincular parámetros
-                                        oci_bind_by_name($stmt, ":username", $username);
-                                        oci_bind_by_name($stmt, ":password", $password);
+                                    $row_count = oci_fetch_all($stmt, $rows);
 
-                                        // Ejecutar la consulta
-                                        oci_execute($stmt);
+                                    oci_close($conn);
 
-                                        // Contar el número de filas devueltas por la consulta
-                                        $row_count = oci_fetch_all($stmt, $rows);
-
-                                        // Cerrar la conexión
-                                        oci_close($conn);
-
-                                        // Verificar si se encontró un usuario con las credenciales proporcionadas
-                                        if ($row_count > 0) {
-                                            // Redirigir a la página de perfil
-                                            header("Location: perfil.html");
-                                            exit();
-                                        } else {
-                                            // Si el usuario no existe, mostrar un mensaje de error o redirigir a otra página
-                                            echo "Usuario o contraseña incorrectos";
-                                        }
+                                    if ($row_count > 0) {
+                                        header("Location: perfil.html");
+                                        exit();
+                                    } else {
+                                        echo "Usuario o contraseña incorrectos";
                                     }
-                                    ?>
-
+                                }
+                                ?>
+                                <?php if ($_SERVER["REQUEST_METHOD"] == "POST" && $row_count === 0) : ?>
+                                    <div class="alert alert-danger mt-3" role="alert">
+                                        Usuario o contraseña incorrectos.
+                                    </div>
+                                <?php endif; ?>
 
                                 <div class="d-flex justify-content-center text-center mt-4 pt-1">
                                     <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
