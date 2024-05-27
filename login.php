@@ -41,12 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 
     // Configuración de la conexión a la base de datos Oracle
-    $username = 'c##photoplay';
-    $password = 'almi123';
-    $connection_string = '//3.221.255.12:1521/ORCLCDB';
+    $db_username = 'c##photoplay';
+    $db_password = 'almi123';
+    $db_service = '3.221.255.12:1521/ORCLCDB';
 
     // Realizar la conexión a la base de datos Oracle
-    $connection = oci_connect($username, $password, $connection_string);
+    $connection = oci_connect($db_username, $db_password, $db_service);
 
     if (!$connection) {
         $error = oci_error();
