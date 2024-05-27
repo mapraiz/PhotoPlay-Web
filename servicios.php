@@ -33,11 +33,10 @@ servicios.php
             echo true;
         }
         
-    } else if($funcion == "getNombresJuegosCategoria")
+    } else if($funcion == "deleteUser")
     {
-        $juegos = get_titulos_juegos_categoria($_POST['idCategoria']);
-        $juegosJson = json_encode($juegos, JSON_UNESCAPED_UNICODE);
-        echo $juegosJson;
+        
+        
     } else if($funcion == "getJuegoByID")
     {
         $juego = get_juegos_id($_POST['idJuego']);

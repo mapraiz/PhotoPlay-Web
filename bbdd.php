@@ -61,7 +61,7 @@
         $sentencia = oci_parse($oci, $sql);
         if(!oci_execute($sentencia))
         {
-            echo "Fallo en la preparación de la sentencia: ".$mysqli->errno;
+            echo "Fallo en la preparación de la sentencia: ".$oci->errno;
         }
         
         

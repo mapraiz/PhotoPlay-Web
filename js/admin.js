@@ -27,7 +27,7 @@ $(document).ready(function(){
                 $.ajax({
                     url: "http://127.0.0.1/PhotoPlay-Web/servicios.php",
                     type: "POST",
-                    data: { function: "deleteScore", username:username, newUsername:newUsername},
+                    data: { function: "deleteUser", username:username},
                     success: function(data){
                         
                     }
