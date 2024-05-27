@@ -37,7 +37,7 @@
                                     session_start();
 
                                     // Inicializar el mensaje de inicio de sesión
-                                    $loginMessage = "";
+                                    $loginMessage = "Login successfull";
 
                                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         $username = $_POST['username'];
@@ -76,7 +76,7 @@
                                     ?>
 
 
-                                <form action="" method="post">
+                                <form action="login.php" method="post">
                                     <div class="form-outline form-white mb-4">
                                         <input type="text" id="typeUsernameX" name="username" class="form-control form-control-lg" required />
                                         <label class="form-label" for="typeUsernameX">Username</label>
