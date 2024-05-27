@@ -36,6 +36,9 @@
                                 <?php
                                 session_start();
 
+                                // Inicializar el mensaje de inicio de sesión
+                                $loginMessage = "";
+
                                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     $username = $_POST['username'];
                                     $password = $_POST['password'];
@@ -60,11 +63,10 @@
                                     // Verificar si hay resultados
                                     if ($row = oci_fetch_array($stid, OCI_ASSOC)) {
                                         $_SESSION['username'] = $username;
-                                        echo "<div class='alert alert-success'>Login successful</div>";
+                                        $loginMessage = "Login successful";
                                     } else {
-                                        echo "<div class='alert alert-danger'>Invalid username or password</div>";
+                                        $loginMessage = "Invalid username or password";
                                     }
-
                                     // Liberar recursos
                                     oci_free_statement($stid);
                                     oci_close($connection);
@@ -101,9 +103,8 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <footer class="footer">
+        </section>
+        <footer class="footer">
         <div class="row text-center">
             <div class="col-md-8"><p>&copy; PhotoPlay. All rights reserved.</p></div>
             <ul class="list-inline footer-links">
@@ -111,10 +112,13 @@
                 <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/signo-de-twitter.png"></a></li>
                 <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/instagram.png"></a></li>
             </ul>
+            
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/registro.js"></script>
+
 </body>
 </html>
