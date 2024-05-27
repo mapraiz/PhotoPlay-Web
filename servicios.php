@@ -23,7 +23,7 @@
     $funcion = $_POST['function'];
     if($funcion == "getScoreUsuario")
     {
-        $scores_usuarios = get_juegos();
+        $scores_usuarios = obtenerEstadisticasUsuarios($arg);
         $scoresUJson = json_encode($scores_usuarios, JSON_UNESCAPED_UNICODE);
         echo $scoresUJson;
     } else if($funcion == "getJuegosCategoria")

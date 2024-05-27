@@ -1,10 +1,11 @@
 <?php
 
+
 function connect_database()
 {
     $username = 'photoplay';
     $password = 'almi123';
-    $connection_string = '//100.28.90.231:1521/ORCLCDB';  // Adjusted connection string format
+    $connection_string = '//100.28.90.231:1521/ORCLCDB';  
 
     $conn = oci_connect($username, $password, $connection_string);
 
@@ -93,8 +94,7 @@ function obtenerEstadisticasUsuarios($conn)
 // Ejemplo de uso:
 $conn = connect_database();
 
-// Insertar un nuevo usuario
-insertar_usuario($conn, 'usuario_prueba', '123456', 0);
+//insertar_usuario($conn, 'usuario_prueba', '123456', 0);
 
 // Obtener partidas por usuario
 $partidas = obtener_partidas_por_usuario($conn, 1); // Suponiendo que el ID del usuario es 1
