@@ -1,11 +1,8 @@
-function insertarUsuario() {
-    var username = document.getElementById('username').value;
-    var contrasena = document.getElementById('contrasena').value;
-    var admin = document.getElementById('admin').value;
-
+// Función para insertar usuario
+function insertarUsuario(username, contrasena, admin) {
     $.ajax({
         type: 'POST',
-        url: 'ajax_requests.php',
+        url: 'registro.php',
         data: {
             action: 'insert_user',
             username: username,
@@ -26,10 +23,11 @@ function insertarUsuario() {
     });
 }
 
+// Función para obtener estadísticas de usuarios
 function obtenerEstadisticasUsuarios() {
     $.ajax({
         type: 'GET',
-        url: 'ajax_requests.php',
+        url: 'registro.php',
         data: {
             action: 'get_user_stats'
         },
