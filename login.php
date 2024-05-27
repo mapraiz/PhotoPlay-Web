@@ -67,7 +67,7 @@
                                     } else {
                                         $loginMessage = "Invalid username or password";
                                     }
-
+//prueba
                                     // Liberar recursos
                                     oci_free_statement($stid);
                                     oci_close($connection);
