@@ -17,16 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     echo json_encode(array('status' => 'success', 'message' => 'Usuario insertado correctamente.'));
     exit;
 }
-
-// Manejar la obtención de estadísticas de usuarios
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'get_user_stats') {
-    $conn = connect_database();
-    $estadisticas = obtenerEstadisticasUsuarios($conn);
-    oci_close($conn);
-
-    echo json_encode(array('status' => 'success', 'stats' => $estadisticas));
-    exit;
-}
 ?>
 
 <!DOCTYPE html>
@@ -85,9 +75,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['act
                 insertarUsuario(username, contrasena, admin);
             });
 
-            $('#obtenerEstadisticasBtn').click(function() {
-                obtenerEstadisticasUsuarios();
-            });
         });
     </script>
 </body>
