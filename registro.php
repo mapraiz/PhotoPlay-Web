@@ -51,6 +51,7 @@
                     <div data-mdb-input-init class="form-outline form-white mb-4">
                     <input type="password" id="typePasswordX" class="form-control form-control-lg" />
                     <label class="form-label" for="typePasswordX">Password</label>
+                    <input type="password" id="typePasswordX" class="form-control form-control-lg" />
                     <label class="form-label" for="typePasswordX">Repeat Password</label>
                     </div>
     
