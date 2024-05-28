@@ -49,7 +49,7 @@
                                 echo "Error de conexión: " . $error['message'];
                                 exit; // Terminar el script si hay un error de conexión
                             } else {
-                                echo "Conexión exitosa"; // Mostrar mensaje de conexión exitosa
+                                echo "Conexión exitosa<br>"; // Mostrar mensaje de conexión exitosa
                             }
 
                             // Consulta SQL para obtener usuarios
@@ -57,12 +57,12 @@
                             $stid = oci_parse($connection, $query);
 
                             // Ejecutar la consulta
-                            oci_execute($stid);
+                            $result = oci_execute($stid);
 
-                            // Verificar la ejecución de la consulta
-                            if (!$stid) {
-                                $e = oci_error($connection);
-                                trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                            if (!$result) {
+                                $e = oci_error($stid);
+                                echo "Error en la ejecución de la consulta: " . $e['message'];
+                                exit;
                             }
 
                             // Verificar si hay datos disponibles
