@@ -53,26 +53,7 @@
                     <label class="form-label" for="typePasswordX">Password</label>
                     </div>
     
-                     ?php
-                    session_start();
-
-                    // Incluir archivo de conexión y funciones de Oracle
-                    require_once 'bbdd.php';
-
-                    // Manejar la inserción de usuario
-                    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'insert_user') {
-                        $username = $_POST['username'];
-                        $contrasena = $_POST['contrasena'];
-                        $admin = $_POST['admin'];
-
-                        $conn = connect_database();
-                        insertar_usuario($conn, $username, $contrasena, $admin);
-                        oci_close($conn);
-
-                        echo json_encode(array('status' => 'success', 'message' => 'Usuario insertado correctamente.'));
-                        exit;
-                    }
-                    ?>
+                 
     
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit">Register</button>
     
