@@ -32,8 +32,8 @@
                 <div class="card bg-custom-1 text-white" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
                         <div class="mb-md-5 mt-md-4 pb-5">
-                            <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                            <p class="text-white-50 mb-5">Please enter your login and password!</p>
+                            <h2 class="fw-bold mb-2 text-uppercase">Registro</h2>
+                            <p class="text-white-50 mb-5">Please enter your username and password!</p>
 
 
                             <form action="login.php" method="get">

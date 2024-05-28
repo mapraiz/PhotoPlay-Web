@@ -1,7 +1,7 @@
 <?php
 function connect_database()
 {
-    $username = 'c##photoplay';
+    $username = 'photoplay';
     $password = 'almi123';
     $connection_string = '//3.221.255.12:1521/ORCLCDB';  
 
