@@ -49,7 +49,7 @@
 
                                 // Realizar la conexión a la base de datos Oracle
                                 $connection = oci_connect($db_username, $db_password, $db_service);
-
+                                <console class="log">hola</console>
                                 if (!$connection) {
                                     $error = oci_error();
                                     echo "Error de conexión: " . $error['message'];
@@ -80,11 +80,7 @@
                             }
                             ?>
 
-                            <?php if (isset($loginMessage)): ?>
-                                <div class="alert alert-danger">
-                                    <?php echo $loginMessage; ?>
-                                </div>
-                            <?php endif; ?>
+                          
 
                             <form action="login.php" method="post">
                                 <div class="form-outline form-white mb-4">
