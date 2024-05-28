@@ -28,6 +28,7 @@ function insertar_usuario($conn, $username, $contrasena, $admin)
 
     oci_execute($stmt);
     oci_free_statement($stmt);
+    
 }
 
 function obtener_partidas_por_usuario($conn, $id_usuario)
