@@ -12,9 +12,7 @@
     transform: translateY(-50%);
     cursor: pointer;
 }
-.bg-custom-color{
+.card{
     background-color: #685bd9;
-}
-.card-body{
-    background-color: #685bd9;
+    color:white;
 }
