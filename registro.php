@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <title>PhotoPlay</title>   
     <link rel="stylesheet" href="css/comun.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/registro.css">
 </head>
 <body>
 
