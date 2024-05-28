@@ -34,13 +34,16 @@ $(document).ready(function(){
 
             }   
         }).then((value)=>{
+            
             if(value=="confirm"){
+                
                 $.ajax({
                     url: "http://127.0.0.1/PhotoPlay-Web/servicios.php",
                     type: "POST",
                     data: { function: "changeScore", score:score,newScore:newScore,fecha:fecha,newFecha:newFecha},
                     success: function(data){
                         console.log(data);
+                        
                     }
                 });
             }

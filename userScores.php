@@ -51,6 +51,23 @@
             <div class="container leaderboard-container">
                 <h3 class="username">user</h3>
                 <ul class="scoreboard" id="scoreboardList">
+                    <?php
+                        session_start();
+                        include_once "bbdd.pp";
+                        $id_usuario=$_GET['user'];
+                        $scores=get_scores_user($id_usuario);
+
+                        for($i=0; $i<sizeof($scores);$i++){
+                            echo "<li class='scoreboard-item'>";
+                            echo "<span class='user-score'>".$scores[$i]['puntuacion']."</span>";
+                            echo "<span class='score-date'>".$scores[$i]['fecha']."</span>";
+                            echo "<button class='edit-score'>Edit</button>";
+                            echo "<button class='delete-score>Delete</button>";
+                            echo "</li>";
+                        }
+
+
+                    ?>
                     <li class="scoreboard-item">
                         
                         <span class="user-score">9999999</span>
@@ -98,7 +115,6 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/userScores.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </body>
 </html>

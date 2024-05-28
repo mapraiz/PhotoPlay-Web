@@ -7,7 +7,7 @@
 
     <title>PhotoPlay</title>   
     <link rel="stylesheet" href="css/comun.css">
-    <link rel="stylesheet" href="css/userScores.css">
+    <link rel="stylesheet" href="css/leaderboard.css">
 </head>
 <body>
 
@@ -33,47 +33,42 @@
     </header>
     <main role="main" class="innercover">
         
-            <div class="container-lg" id="editContainer" style="display: none;">
-                <form id="edit-form">
-                    <div class="form-group">
-                        <label for="score">Score</label>
-                        <input type="text" class="form-control" id="score-edit" aria-describedby="scoreEdit">
-                        
-                    </div>
-                    <div class="form-group">
-                        <label for="scoreFecha">Fecha</label>
-                        <input type="date" class="form-control" id="score-fecha" >
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
             <div class="container leaderboard-container">
-                <h3 class="username">user</h3>
-                <ul class="scoreboard" id="scoreboardList">
-                    <li class="scoreboard-item">
+                <h3 class="h3-leaderboard">Top Rankings</h3>
+                <ul class="leaderboard" id="leaderboardList">
+                    <?php
+                        session_start();
+                        include_once "bbdd.php";
+                        $scores=get_scores();
+                        for($i=0; $i<sizeof($scores);$i++){
+                            echo "<li class='leaderboard-item'>";
+                            echo "<span class='player-name'>".$scores[$i]['username']."</span>";
+                            echo "<span class='score'>".$scores[$i]['puntuacion']."</span>";
+                            
+                            echo "</li>";
+                        }
+                    ?>
+                    <li class="leaderboard-item">
                         
-                        <span class="user-score">9999999</span>
-                        <span class="score-date">2023/05/07</span>
-                        <button class="edit-score">Edit</button>
-                        <button class="delete-score">Delete</button>
+                        <span class="player-name">Ruben</span>
+                        <span class="score">99999999</span>
                     </li>
-                    <li class="scoreboard-item">
+                    <li class="leaderboard-item">
                         
                         <span class="player-name">Ander</span>
                         <span class="score">99999999</span>
                     </li>
-                    <li class="scoreboard-item">
+                    <li class="leaderboard-item">
                         
                         <span class="player-name">María</span>
                         <span class="score">99999999</span>
                     </li>
-                    <li class="scoreboard-item">
+                    <li class="leaderboard-item">
                         
                         <span class="player-name">Diego</span>
                         <span class="score">99999999</span>
                     </li>
-                    <li class="scoreboard-item">
+                    <li class="leaderboard-item">
                         
                         <span class="player-name">Peio</span>
                         <span class="score">-1</span>
@@ -97,8 +92,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/jquery-3.7.1.min.js"></script>
-    <script src="js/userScores.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </body>
 </html>
