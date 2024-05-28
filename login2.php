@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+var_dump("ostias");
+
 // Include the database connection and Oracle functions file
 require_once 'bbdd.php';
 
