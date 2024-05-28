@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <title>PhotoPlay</title>   
     <link rel="stylesheet" href="css/comun.css">
-    <link rel="stylesheet" href="css/registro.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 
@@ -30,10 +30,10 @@
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div class="card bg-custom-1 text-white" style="border-radius: 1rem;">
-                    <div class="card-body p-5 text-center" >
+                    <div class="card-body p-5 text-center">
                         <div class="mb-md-5 mt-md-4 pb-5">
-                            <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
-                            <p class="text-white-50 mb-5">Please insert your datos</p>
+                            <h2 class="fw-bold mb-2 text-uppercase">Registro</h2>
+                            <p class="text-white-50 mb-5">Inserte sus datos</p>
 
                           
 
@@ -43,16 +43,12 @@
                                     <label class="form-label" for="typeUsernameX">Username</label>
                                 </div>
 
-                                <div class="password-container form-outline form-white mb-4">
-                                    <input type="password" id="typePasswordX" class="form-control form-control-lg" />
+                                <div class="form-outline form-white mb-4">
+                                    <input type="password" id="typePasswordX" name="password" class="form-control form-control-lg" required />
                                     <label class="form-label" for="typePasswordX">Password</label>
-                                    <span class="toggle-password" onclick="togglePasswordVisibility('typePasswordX')">&#128065;</span>
-                                </div>
+                                    <input type="password" id="typePasswordX" name="password" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typePasswordX">Password</label>
                                 
-                                <div class="password-container form-outline form-white mb-4">
-                                    <input type="password" id="typePasswordX2" class="form-control form-control-lg" />
-                                    <label class="form-label" for="typePasswordX2">Repeat Password</label>
-                                    <span class="toggle-password" onclick="togglePasswordVisibility('typePasswordX2')">&#128065;</span>
                                 </div>
 
                                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
@@ -90,15 +86,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="js/jquery-3.7.1.min.js"></script>
-<script>
-        function togglePasswordVisibility(inputId) {
-            const input = document.getElementById(inputId);
-            if (input.type === "password") {
-                input.type = "text";
-            } else {
-                input.type = "password";
-            }
-        }
-    </script>
+
 </body>
 </html>
