@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <title>PhotoPlay</title>   
+    <title>PhotoPlay - Usuarios</title>   
     <link rel="stylesheet" href="css/comun.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
@@ -38,7 +38,7 @@
                             // Configuración de la conexión a la base de datos Oracle
                             $db_username = 'c##photoplay';
                             $db_password = 'almi123';
-                            $db_service = '3.221.255.12:8080/ORCLCDB';
+                            $db_service = '3.221.255.12:1521/ORCLCDB';
 
                             // Realizar la conexión a la base de datos Oracle
                             $connection = oci_connect($db_username, $db_password, $db_service);
@@ -65,18 +65,13 @@
                                 exit;
                             }
 
-                            // Verificar si hay datos disponibles
-                            if (oci_fetch($stid)) {
-                                // Mostrar la tabla de usuarios
-                                echo "<table border='1'>";
-                                echo "<tr><th>ID</th><th>Username</th><th>Contraseña</th><th>Admin</th></tr>";
-                                do {
-                                    echo "<tr><td>" . oci_result($stid, 'ID_USUARIO') . "</td><td>" . oci_result($stid, 'USERNAME') . "</td><td>" . oci_result($stid, 'CONTRASENA') . "</td><td>" . oci_result($stid, 'ADMIN') . "</td></tr>";
-                                } while (oci_fetch($stid));
-                                echo "</table>";
-                            } else {
-                                echo "No se encontraron usuarios.";
+                            // Mostrar los resultados
+                            echo "<table border='1'>";
+                            echo "<tr><th>ID</th><th>Username</th><th>Contraseña</th><th>Admin</th></tr>";
+                            while ($row = oci_fetch_array($stid, OCI_ASSOC)) {
+                                echo "<tr><td>" . $row['ID_USUARIO'] . "</td><td>" . $row['USERNAME'] . "</td><td>" . $row['CONTRASENA'] . "</td><td>" . $row['ADMIN'] . "</td></tr>";
                             }
+                            echo "</table>";
 
                             // Liberar recursos
                             oci_free_statement($stid);
