@@ -49,7 +49,6 @@
 
                                 // Realizar la conexión a la base de datos Oracle
                                 $connection = oci_connect($db_username, $db_password, $db_service);
-                            
                                 if (!$connection) {
                                     $error = oci_error();
                                     echo "Error de conexión: " . $error['message'];
@@ -82,7 +81,7 @@
 
                           
 
-                            <form action="login.php" method="post">
+                            <form action="login.php" method="get">
                                 <div class="form-outline form-white mb-4">
                                     <input type="text" id="typeUsernameX" name="username" class="form-control form-control-lg" required />
                                     <label class="form-label" for="typeUsernameX">Username</label>
