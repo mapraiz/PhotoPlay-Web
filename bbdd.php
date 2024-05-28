@@ -1,9 +1,7 @@
 <?php
 
-connect_database();
 function connect_database()
 {
-    var_dump("database")
     $username = 'c##photoplay';
     $password = 'almi123';
     $connection_string = '//3.221.255.12:1521/ORCLCDB';  
@@ -111,23 +109,5 @@ function get_user($conn, $username, $password)
     return $row;
 }
 
-
-// Ejemplo de uso:
-$conn = connect_database();
-
-//insertar_usuario($conn, 'usuario_prueba', '123456', 0);
-
-// Obtener partidas por usuario
-//$partidas = obtener_partidas_por_usuario($conn, 1); // Suponiendo que el ID del usuario es 1
-
-// Actualizar puntuación de una partida
-//actualizar_puntuacion_partida($conn, 1, 150); // Actualizar partida con ID 1 a una puntuación de 150
-
-// Obtener estadísticas de usuarios
-/*$estadisticas = obtenerEstadisticasUsuarios($conn);
-print_r($estadisticas);*/
-
-// Cerrar conexión
-oci_close($conn);
 
 ?>
