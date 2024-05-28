@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
     $conn = connect_database();
     require_once 'bbdd.php';
-
+    var_dump("datavase");
     $user = get($conn, $username, $password);
     oci_close($conn);
 
