@@ -40,11 +40,11 @@
 
                             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 $username = $_POST['username'];
-                                $password = $_POST['password'];
+                                $contrasena = $_POST['contrasena'];
 
                                 // Configuración de la conexión a la base de datos Oracle
                                 $db_username = 'c##photoplay';
-                                $db_password = 'almi123';
+                                $db_contrasena = 'almi123';
                                 $db_service = '3.221.255.12:1521/ORCLCDB';
 
                                 // Realizar la conexión a la base de datos Oracle
@@ -59,11 +59,11 @@
                                 
                                 
                                 // Consulta SQL para verificar las credenciales de inicio de sesión
-                                $query = "SELECT * FROM usuario WHERE username = :username AND contrasena = :password";
+                                $query = "SELECT * FROM usuario WHERE username = :username AND contrasena = :contrasena";
                                 $stid = oci_parse($connection, $query);
 
                                 oci_bind_by_name($stid, ':username', $username);
-                                oci_bind_by_name($stid, ':password', $password);
+                                oci_bind_by_name($stid, ':contrasena', $contrasena);
 
                                 oci_execute($stid);
 
@@ -92,8 +92,8 @@
                                 </div>
 
                                 <div class="form-outline form-white mb-4">
-                                    <input type="password" id="typePasswordX" name="password" class="form-control form-control-lg" required />
-                                    <label class="form-label" for="typePasswordX">Password</label>
+                                    <input type="contrasena" id="typecontrasenaX" name="contrasena" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typecontrasenaX">contrasena</label>
                                 </div>
 
                                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
