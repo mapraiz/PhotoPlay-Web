@@ -11,6 +11,8 @@ function connect_database()
         $error = oci_error();
         echo "Oracle connection error: " . $error['message'];
         exit;
+    }else{
+        echo "Oracle connection success";
     }
 
     return $conn;
