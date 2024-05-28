@@ -1,5 +1,6 @@
 <?php
 
+connect_database();
 function connect_database()
 {
     var_dump("database")
