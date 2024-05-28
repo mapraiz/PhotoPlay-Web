@@ -78,7 +78,7 @@ body{
     background-color: #0069d9;
     border-color: #0062cc;
 }
-.edit-form{
+#edit-form{
     display: flex;
     flex-flow: row wrap;
     align-items: center;

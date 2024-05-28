@@ -37,11 +37,13 @@ servicios.php
     {
         
         
-    } else if($funcion == "getJuegoByID")
+    } else if($funcion == "changeScore")
     {
-        $juego = get_juegos_id($_POST['idJuego']);
-        $juegoJson = json_encode($juego, JSON_UNESCAPED_UNICODE);
-        echo $juegoJson;
+       if(change_score($_POST['score'],$_POST['newScore'],$_POST['fecha'],$_POST['newFecha'])){
+            echo true;
+       }else{
+            echo false;
+       }
     }
     
 ?>

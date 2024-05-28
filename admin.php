@@ -61,7 +61,22 @@
             <div class="container user-container">
                 
                 
+                
                 <ul class="userboard" id="userList">
+                    <?php
+                        session_start();
+                        include_once "bbdd.php"
+                        $users=get_users();
+
+                        for($i=0; $i<sizeof($users);$i++){
+                            echo "<li class='user-item'>";
+                            echo "<a href='userScores.html?user=".$users[$i]['id_usuario']."' class='user-name>".$users[$i]['username']."</a>";
+                            echo "<button class='scoresButton'>Scores</button>";
+                            echo "<button class='deleteButton'>Delete</button>";
+                            echo "</li>";
+                        }
+
+                    ?>
                     <li class="user-item">
                         
                         <span class="user-name">Ruben</span>
@@ -75,85 +90,10 @@
                         <span class="player-name">Ruben</span>
                         <span class="score">99999999</span>
                     </li>
-                    <li class="user-item">
-                        
-                        <span class="player-name">Ruben</span>
-                        <span class="score">99999999</span>
-                    </li>
-                    <li class="user-item">
-                        
-                        <span class="player-name">Ruben</span>
-                        <span class="score">99999999</span>
-                    </li>
-                    <li class="user-item">
-                        
-                        <span class="player-name">Ruben</span>
-                        <span class="score">99999999</span>
-                    </li>
+             
                 </ul>
             </div>
-            
-                <!--<table class="score-table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Score</th>
-                            <th scope="col">Fecha</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="score-row">
-                            <td>
-                                Usuario
-                            </td>
-                            <td>
-                                score
-                            </td>
-                            <td>
-                                2024/04/6
-                            </td>
-                        </tr>
-                        <tr class="score-row">
-                            <td>
-                                Usuario
-                            </td>
-                            <td>
-                                score
-                            </td>
-                            <td>
-                                2024/04/6
-                            </td>
-                        </tr>
-                        <tr class="score-row">
-                            <td>
-                                Usuario
-                            </td>
-                            <td>
-                                score
-                            </td>
-                            <td>
-                                2024/04/6
-                            </td>
-                        </tr>
-                        <tr class="score-row">
-                            <td>
-                                Usuario
-                            </td>
-                            <td>
-                                score
-                            </td>
-                            <td>
-                                2024/04/6
-                            </td>
-                            <td>
-                                <div class="botonesEditar">
-                                    <button type="button" class="btn btn-primary btn-sm" id="scoreButton">Scores</button>
-                                    <button type="button" class="btn btn-primary btn-sm" id="usersButton">Users</button>
-
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>-->
+           
 
             
         </div>

@@ -51,6 +51,37 @@
         
     }
 
+    function change_score($score, $newScore, $fecha, $newFecha){
+        $oci = connect_database();
+        
+        $sql = "UPDATE partida SET puntuacion=? , fecha=? WHERE puntuacion=?, fecha=?";
+        $sentencia = oci_parse($oci, $sql);
+        if(!oci_execute($sentencia))
+        {
+            echo "Fallo en la preparación de la sentencia: ".$oci->errno;
+            return false;
+        }
+
+        $asignar = $sentencia->bind_param("sdsd", $score, $fecha, $newScore, $newFecha);
+        if(!$asignar)
+        {
+            echo "Fallo en la asignacion de parametros ".$oci->errno;
+            return false;
+        }
+        
+        $ejecucion = $sentencia->execute();
+        if(!$ejecucion)
+        {
+            echo "Fallo en la ejecucion: ".$oci->errno;
+            return false;
+        }else{
+            return true;
+        }
+
+        
+        
+    }
+
 
     function get_juegos()
     {
@@ -97,6 +128,47 @@
         }
         $mysqli->close();
         return $juegos;
+    }
+    function get_users()
+    {
+        
+        $oci = connect_database();
+        
+        $sql = "SELECT * FROM usuario";
+        $sentencia = oci_parse($oci, $sql);
+        if(!oci_execute($sentencia))
+        {
+            echo "Fallo en la preparación de la sentencia: ".$oci->errno;
+        }
+        
+        
+        $ejecucion = $sentencia->execute();
+        if(!$ejecucion)
+        {
+            echo "Fallo en la ejecucion: ".$oci->errno;
+        }
+        
+        $users = array();
+
+        $id_usuario = -1;
+        $username = "";
+        $contraseña = "";
+        $admin = -1;
+       
+        $vincular = $sentencia->bind_result($id_usuario, $username, $contraseña, $admin);
+        
+        if(!$vincular)
+        {
+            echo "Fallo al vincular la sentencia: ".$oci->errno;
+        }
+        while($sentencia->fetch())
+        {
+            $user = array('id_usuario' => $id_usuario, 'username' => $username, 'contraseña' => $contraseña,
+                            'admin' => $admin);
+            $users[] = $user;
+        }
+        $oci->close();
+        return $users;
     }
     
 
