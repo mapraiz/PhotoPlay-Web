@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-
+var_dump("ostias");
 
 // Include the database connection and Oracle functions file
 require_once 'bbdd.php';
-var_dump("ostias");
+var_dump("ostias2");
 // Handle the login
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'login') {
     $username = $_POST['username'];
