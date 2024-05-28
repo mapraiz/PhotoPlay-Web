@@ -11,5 +11,6 @@ if (!$connection) {
 } else {
     echo "Conexion exitosa!";
     oci_close($connection);
+    //prueba
 }
 ?>
