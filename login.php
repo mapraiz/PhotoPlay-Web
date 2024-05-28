@@ -53,8 +53,11 @@
                                     $error = oci_error();
                                     echo "Error de conexión: " . $error['message'];
                                     exit;
+                                } else {
+                                    echo "Conexión exitosa";
                                 }
-
+                                
+                                
                                 // Consulta SQL para verificar las credenciales de inicio de sesión
                                 $query = "SELECT * FROM usuario WHERE username = :username AND contrasena = :password";
                                 $stid = oci_parse($connection, $query);
