@@ -69,12 +69,13 @@
 
                                 if ($row = oci_fetch_array($stid, OCI_ASSOC)) {
                                     $_SESSION['username'] = $username;
-                                    // Redirigir al usuario a perfil.php
+                                    // Redirigir al usuario a perfil.html
                                     header("Location: perfil.html");
-                                    exit();
+                                    exit(); // Asegura que el script se detenga aquí
                                 } else {
                                     $loginMessage = "Nombre de usuario o contraseña inválidos";
                                 }
+                                
 
                                 // Liberar recursos
                                 oci_free_statement($stid);
