@@ -1,3 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
 <?php
 // Establecer la conexión
 $db_username = 'c##photoplay';
@@ -17,8 +37,9 @@ $query = "SELECT * FROM usuario";
 $stid = oci_parse($connection, $query);
 oci_execute($stid);
 
-// Recuperar y mostrar los datos
-echo "<table border='1'>";
+// Mostrar los usuarios en una tabla HTML
+echo "<h2>Usuarios</h2>";
+echo "<table>";
 echo "<tr><th>ID</th><th>Username</th><th>Contraseña</th><th>Admin</th></tr>";
 while ($row = oci_fetch_assoc($stid)) {
     echo "<tr>";
@@ -34,3 +55,6 @@ echo "</table>";
 oci_free_statement($stid);
 oci_close($connection);
 ?>
+
+</body>
+</html>
