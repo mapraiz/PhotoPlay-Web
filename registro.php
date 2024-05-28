@@ -1,81 +1,87 @@
-<?php
-session_start();
-
-// Incluir archivo de conexión y funciones de Oracle
-require_once 'bbdd.php';
-
-// Manejar la inserción de usuario
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'insert_user') {
-    $username = $_POST['username'];
-    $contrasena = $_POST['contrasena'];
-    $admin = $_POST['admin'];
-
-    $conn = connect_database();
-    insertar_usuario($conn, $username, $contrasena, $admin);
-    oci_close($conn);
-
-    echo json_encode(array('status' => 'success', 'message' => 'Usuario insertado correctamente.'));
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Registro de Usuario</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/index.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="ajax_scripts.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <title>PhotoPlay</title>   
+    <link rel="stylesheet" href="css/comun.css">
+    <link rel="stylesheet" href="css/registro.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="PhotoPlay">
-        </div>
-        <?php include "menu.php"; ?>
-    </header>
-    <main>
-        <div class="container">
-            <h2>Insertar Usuario</h2>
-            <form id="insertarUsuarioForm">
-                <label for="username">Nombre de Usuario:</label><br>
-                <input type="text" id="username" name="username"><br>
-                <label for="contrasena">Contraseña:</label><br>
-                <input type="password" id="contrasena" name="contrasena"><br>
-                <label for="admin">Admin:</label><br>
-                <input type="text" id="admin" name="admin"><br><br>
-                <button type="submit">Insertar Usuario</button>
-            </form>
 
-            <h2>Obtener Estadísticas de Usuarios</h2>
-            <button type="button" id="obtenerEstadisticasBtn">Obtener Estadísticas</button>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #685bd9;">
+        <a class="navbar-brand" href="index.html">
+            <img src="imagenes/preguntados2edit.png" id="logo-preguntados" width="150" height="150" class="d-inline-block align-center">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%" href="leaderboard.html">Leaderboard</a></li>
+                <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%" href="registro.html">Registro</a></li>
+                <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%" href="login.php">Login</a></li>
+            </ul>
         </div>
-    </main>
+    </nav>
+</header>
 
-    <footer class="footer">
-        <ul>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Instagram</a></li>
+<section class="vh-100 bg-dark">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-custom-1 text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <div class="mb-md-5 mt-md-4 pb-5">
+                            <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                            <p class="text-white-50 mb-5">Please enter your login and password!</p>
+
+
+                            <form action="login.php" method="get">
+                                <div class="form-outline form-white mb-4">
+                                    <input type="text" id="typeUsernameX" name="username" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typeUsernameX">Username</label>
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    <input type="password" id="typePasswordX" name="password" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typePasswordX">Password</label>
+                                </div>
+
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                            </form>
+
+                            <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                                <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                                <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                                <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="mb-0">Don't have an account? <a href="registro.html" class="text-white">Sign Up</a></p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="row text-center">
+        <div class="col-md-8"><p>&copy; PhotoPlay. All rights reserved.</p></div>
+        <ul class="list-inline footer-links">
+            <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/facebook.png"></a></li>
+            <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/signo-de-twitter.png"></a></li>
+            <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/instagram.png"></a></li>
         </ul>
-        <p>&copy; <?php echo date("Y"); ?> PhotoPlay. All rights reserved.</p>
-    </footer>
+    </div>
+</footer>
 
-    <script>
-        $.getScript('ajax_scripts.js', function() {
-            $('#insertarUsuarioForm').submit(function(event) {
-                event.preventDefault(); 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/jquery-3.7.1.min.js"></script>
 
-                var username = $('#username').val();
-                var contrasena = $('#contrasena').val();
-                var admin = $('#admin').val();
-
-                insertarUsuario(username, contrasena, admin);
-            });
-
-        });
-    </script>
 </body>
 </html>
