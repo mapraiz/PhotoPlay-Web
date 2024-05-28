@@ -1,20 +1,72 @@
+<?php
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Configuración de la conexión a la base de datos Oracle
+    $db_username = 'c##photoplay';
+    $db_password = 'almi123';
+    $db_service = '3.221.255.12:1521/ORCLCDB';
+
+    // Realizar la conexión a la base de datos Oracle
+    $connection = oci_connect($db_username, $db_password, $db_service);
+
+    if (!$connection) {
+        $error = oci_error();
+        echo "<div class='alert alert-danger'>Error de conexión: " . htmlspecialchars($error['message']) . "</div>";
+        exit;
+    }
+
+    // Consulta SQL para verificar las credenciales de inicio de sesión
+    $query = "SELECT * FROM usuario WHERE username = :username AND contrasena = :password";
+    $stid = oci_parse($connection, $query);
+
+    if (!$stid) {
+        $error = oci_error($connection);
+        echo "<div class='alert alert-danger'>Error al preparar la consulta: " . htmlspecialchars($error['message']) . "</div>";
+        exit;
+    }
+
+    oci_bind_by_name($stid, ':username', $username);
+    oci_bind_by_name($stid, ':password', $password);
+
+    if (!oci_execute($stid)) {
+        $error = oci_error($stid);
+        echo "<div class='alert alert-danger'>Error al ejecutar la consulta: " . htmlspecialchars($error['message']) . "</div>";
+        exit;
+    }
+
+    if ($row = oci_fetch_array($stid, OCI_ASSOC)) {
+        $_SESSION['username'] = $username;
+        // Redirigir al usuario a perfil.html
+        header("Location: perfil.html");
+        exit();
+    } else {
+        $loginMessage = "Nombre de usuario o contraseña inválidos";
+    }
+
+    // Liberar recursos
+    oci_free_statement($stid);
+    oci_close($connection);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <title>PhotoPlay</title>   
+    <title>PhotoPlay</title>
     <link rel="stylesheet" href="css/comun.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-
 <header>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #685bd9;">
-        <a class="navbar-brand" href="index.html">
-            <img src="imagenes/preguntados2edit.png" id="logo-preguntados" width="150" height="150" class="d-inline-block align-center">
-        </a>
+        <a class="navbar-brand" href="index.html"><img src="imagenes/preguntados2edit.png" id="logo-preguntados" width="150" height="150" class="d-inline-block align-center"></a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%" href="leaderboard.html">Leaderboard</a></li>
@@ -24,7 +76,6 @@
         </div>
     </nav>
 </header>
-
 <section class="vh-100 bg-dark">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -35,52 +86,11 @@
                             <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
                             <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
-                            <?php
-                            session_start();
-
-                            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                                $username = $_POST['username'];
-                                $password = $_POST['password'];
-
-                                // Configuración de la conexión a la base de datos Oracle
-                                $db_username = 'c##photoplay';
-                                $db_password = 'almi123';
-                                $db_service = '3.221.255.12:1521/ORCLCDB';
-
-                                // Realizar la conexión a la base de datos Oracle
-                                $connection = oci_connect($db_username, $db_password, $db_service);
-                                <console class="log">hola</console>
-                                if (!$connection) {
-                                    $error = oci_error();
-                                    echo "Error de conexión: " . $error['message'];
-                                    exit;
-                                }
-
-                                // Consulta SQL para verificar las credenciales de inicio de sesión
-                                $query = "SELECT * FROM usuario WHERE username = :username AND contrasena = :password";
-                                $stid = oci_parse($connection, $query);
-
-                                oci_bind_by_name($stid, ':username', $username);
-                                oci_bind_by_name($stid, ':password', $password);
-
-                                oci_execute($stid);
-
-                                if ($row = oci_fetch_array($stid, OCI_ASSOC)) {
-                                    $_SESSION['username'] = $username;
-                                    // Redirigir al usuario a perfil.php
-                                    header("Location: perfil.html");
-                                    exit();
-                                } else {
-                                    $loginMessage = "Nombre de usuario o contraseña inválidos";
-                                }
-
-                                // Liberar recursos
-                                oci_free_statement($stid);
-                                oci_close($connection);
-                            }
-                            ?>
-
-                          
+                            <?php if (isset($loginMessage)): ?>
+                                <div class="alert alert-danger">
+                                    <?php echo htmlspecialchars($loginMessage); ?>
+                                </div>
+                            <?php endif; ?>
 
                             <form action="login.php" method="post">
                                 <div class="form-outline form-white mb-4">
@@ -113,7 +123,6 @@
         </div>
     </div>
 </section>
-
 <footer class="footer">
     <div class="row text-center">
         <div class="col-md-8"><p>&copy; PhotoPlay. All rights reserved.</p></div>
@@ -124,11 +133,9 @@
         </ul>
     </div>
 </footer>
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="js/jquery-3.7.1.min.js"></script>
-<script src="js/login.php"></script>
-
+<script src="js/login.js"></script>
 </body>
 </html>
