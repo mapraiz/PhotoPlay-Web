@@ -28,7 +28,7 @@ function insertar_usuario($conn, $username, $contrasena, $admin)
 
     oci_execute($stmt);
     oci_free_statement($stmt);
-    
+
 }
 
 function obtener_partidas_por_usuario($conn, $id_usuario)
@@ -88,6 +88,23 @@ function obtenerEstadisticasUsuarios($conn)
     return $result;
 }
 
+
+function get_user($conn, $username, $password)
+{
+    $sql = 'SELECT * FROM users WHERE username = :username AND password = :password';
+
+    $stmt = oci_parse($conn, $sql);
+
+    oci_bind_by_name($stmt, ':username', $username);
+    oci_bind_by_name($stmt, ':password', $password);
+
+    oci_execute($stmt);
+
+    $row = oci_fetch_assoc($stmt);
+    oci_free_statement($stmt);
+
+    return $row;
+}
 
 
 // Ejemplo de uso:

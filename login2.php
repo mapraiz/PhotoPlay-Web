@@ -10,7 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $password = $_POST['password'];
 
     $conn = connect_database();
-    $user = get_user($conn, $username, $password);
+    require_once 'bbdd.php';
+
+    $user = get($conn, $username, $password);
     oci_close($conn);
 
     if ($user) {
