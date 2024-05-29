@@ -39,6 +39,7 @@
         </div>
         <div class="image-left">
             <img src="imagenes/Juego/PanelInicial.png" alt="Panel Inicial">
+        
             <p>Al abrir el juego, verás un panel donde necesitas iniciar sesión para jugar. Para crear una cuenta, ve a la sección 'Registrarse' en esta misma página y sigue los pasos. Con tu cuenta, podrás almacenar todos tus datos de juego. Sin iniciar sesión, solo podrás salir del juego o ver el Top 10 de mejores puntuaciones.</p>
         </div>
         <div class="image-right">
