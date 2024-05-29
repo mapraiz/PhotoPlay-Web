@@ -49,18 +49,21 @@
 
 </main>
 
-<footer class="footer bg-sucess text-center">
-    <div class="row">
-    <p>&copy; <?php echo date("Y"); ?> PhotoPlay. All rights reserved.</p>
-        <ul class="list-inline footer-links">
-            <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/facebook.png"></a></li>
-            <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/signo-de-twitter.png"></a></li>
-            <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/instagram.png"></a></li>
-        </ul>
-        
 
+    <footer class="footer">
+    <div class="row text-center">
+        <div class="col-md-8">
+        <p>&copy; <?php echo date("Y"); ?> PhotoPlay. All rights reserved.</p>
+
+        </div>
+        <div class="footer-links">
+            <a href="#"><img src="/imagenes/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="/imagenes/signo-de-twitter.png" alt="Twitter"></a>
+            <a href="#"><img src="/imagenes/instagram.png" alt="Instagram"></a>
+        </div>
     </div>
 </footer>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="js/jquery-3.7.1.min.js"></script>
