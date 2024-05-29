@@ -108,6 +108,4 @@ function get_user($conn, $username, $password)
 
     return $row;
 }
-
-
 ?>
