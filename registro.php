@@ -36,7 +36,7 @@
                             <p class="text-white-50 mb-5">Please enter your username and password!</p>
 
 
-                            <form action="login.php" method="get">
+                            <form action="registro.php" method="post">
                                 <div class="form-outline form-white mb-4">
                                     <input type="text" id="typeUsernameX" name="username" class="form-control form-control-lg" required />
                                     <label class="form-label" for="typeUsernameX">Username</label>
@@ -51,7 +51,7 @@
                                     <label class="form-label" for="typePasswordX">Repeat Password</label>
                                 </div>
 
-                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Register</button>
                             </form>
 
                             <div class="d-flex justify-content-center text-center mt-4 pt-1">
