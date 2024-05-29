@@ -34,9 +34,6 @@
 <main role="main" class="innercover">
     <div class="container-fluid bg-dark">
         <div class="row">
-            <div class="col-md text-white">
-              One of three columns
-            </div>
             <div class="col-lg text-white text-wrap">
               <h2 class="text-left text-decoration-underline">Preguntados</h2>
               <p class="lh-lg">Preguntados es un juego en el que tus conocimientos de DAM se pondran a prueba. Compite con otros jugadores para conseguir la puntuación mas alta. 
