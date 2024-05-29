@@ -16,7 +16,7 @@
 
 <header >
    
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #000000;">
+    <nav class="navbar navbar-expand-lg navbar-light purple-bg">
         
         <a class="navbar-brand" href="index.html" ><img src="imagenes/preguntados2edit.png" id="logo-preguntados" width="150" height="150" class="d-inline-block align-center"></a>
         <div clas="collapse navbar-collapse" id="navbarNav">
