@@ -57,9 +57,9 @@
 
         </div>
         <div class="footer-links">
-            <a href="#"><img src="/imagenes/facebook.png" alt="Facebook"></a>
-            <a href="#"><img src="/imagenes/signo-de-twitter.png" alt="Twitter"></a>
-            <a href="#"><img src="/imagenes/instagram.png" alt="Instagram"></a>
+        <li class="list-inline-item"><a href="https://es-es.facebook.com/"><img width="40" height="40" src="/imagenes/facebook.png"></a></li>
+                <li class="list-inline-item"><a href="https://x.com/"><img width="40" height="40" src="/imagenes/signo-de-twitter.png"></a></li>
+                <li class="list-inline-item"><a href="https://www.instagram.com/"><img width="40" height="40" src="/imagenes/instagram.png"></a></li>
         </div>
     </div>
 </footer>

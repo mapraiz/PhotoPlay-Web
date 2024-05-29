@@ -37,88 +37,88 @@
 
 
                             <form action="registro.php" method="post">
-    <div class="form-outline form-white mb-4">
-        <input type="text" id="typeUsernameX" name="username" class="form-control form-control-lg" required />
-        <label class="form-label" for="typeUsernameX">Username</label>
-    </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input type="text" id="typeUsernameX" name="username" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typeUsernameX">Username</label>
+                                </div>
 
-    <div class="form-outline form-white mb-4">
-        <input type="password" id="typePasswordX" name="password" class="form-control form-control-lg" required />
-        <label class="form-label" for="typePasswordX">Password</label>
-    </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input type="password" id="typePasswordX" name="password" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typePasswordX">Password</label>
+                                </div>
 
-    <div class="form-outline form-white mb-4">
-        <input type="password" id="typeRepeatPasswordX" name="repeat_password" class="form-control form-control-lg" required />
-        <label class="form-label" for="typeRepeatPasswordX">Repeat Password</label>
-    </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input type="password" id="typeRepeatPasswordX" name="repeat_password" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typeRepeatPasswordX">Repeat Password</label>
+                                </div>
 
-    <button class="btn btn-outline-light btn-lg px-5" type="submit">Register</button>
-</form>
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Register</button>
+                            </form>
 
                             <?php
-session_start();
+                                session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $repeatPassword = $_POST['repeat_password'];
+                                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                                    $username = $_POST['username'];
+                                    $password = $_POST['password'];
+                                    $repeatPassword = $_POST['repeat_password'];
 
-    // Check if passwords match
-    if ($password !== $repeatPassword) {
-        echo "Passwords do not match!";
-        exit;
-    }
+                                    // Check if passwords match
+                                    if ($password !== $repeatPassword) {
+                                        echo "Passwords do not match!";
+                                        exit;
+                                    }
 
-    // Hash the password
-    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+                                    // Hash the password
+                                    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-    // Database connection configuration
-    $db_username = 'c##photoplay';
-    $db_password = 'almi123';
-    $db_service = '3.221.255.12:1521/ORCLCDB';
+                                    // Database connection configuration
+                                    $db_username = 'c##photoplay';
+                                    $db_password = 'almi123';
+                                    $db_service = '3.221.255.12:1521/ORCLCDB';
 
-    // Connect to Oracle database
-    $connection = oci_connect($db_username, $db_password, $db_service);
+                                    // Connect to Oracle database
+                                    $connection = oci_connect($db_username, $db_password, $db_service);
 
-    if (!$connection) {
-        $error = oci_error();
-        echo "Connection error: " . $error['message'];
-        exit;
-    }
+                                    if (!$connection) {
+                                        $error = oci_error();
+                                        echo "Connection error: " . $error['message'];
+                                        exit;
+                                    }
 
-    // Check if username already exists
-    $query = "SELECT COUNT(*) AS USER_COUNT FROM usuario WHERE username = :username";
-    $stid = oci_parse($connection, $query);
-    oci_bind_by_name($stid, ':username', $username);
-    oci_execute($stid);
+                                    // Check if username already exists
+                                    $query = "SELECT COUNT(*) AS USER_COUNT FROM usuario WHERE username = :username";
+                                    $stid = oci_parse($connection, $query);
+                                    oci_bind_by_name($stid, ':username', $username);
+                                    oci_execute($stid);
 
-    $row = oci_fetch_assoc($stid);
-    if ($row['USER_COUNT'] > 0) {
-        echo "Username already exists!";
-        oci_free_statement($stid);
-        oci_close($connection);
-        exit;
-    }
-    oci_free_statement($stid);
+                                    $row = oci_fetch_assoc($stid);
+                                    if ($row['USER_COUNT'] > 0) {
+                                        echo "Username already exists!";
+                                        oci_free_statement($stid);
+                                        oci_close($connection);
+                                        exit;
+                                    }
+                                    oci_free_statement($stid);
 
-    // Insert new user into the database
-    $query = "INSERT INTO usuario (username, contrasena) VALUES (:username, :password)";
-    $stid = oci_parse($connection, $query);
-    oci_bind_by_name($stid, ':username', $username);
-    oci_bind_by_name($stid, ':password', $hashedPassword);
+                                    // Insert new user into the database
+                                    $query = "INSERT INTO usuario (username, contrasena) VALUES (:username, :password)";
+                                    $stid = oci_parse($connection, $query);
+                                    oci_bind_by_name($stid, ':username', $username);
+                                    oci_bind_by_name($stid, ':password', $hashedPassword);
 
-    $result = oci_execute($stid);
-    if ($result) {
-        echo "Registration successful!";
-    } else {
-        $error = oci_error($stid);
-        echo "Error registering user: " . $error['message'];
-    }
+                                    $result = oci_execute($stid);
+                                    if ($result) {
+                                        echo "Registration successful!";
+                                    } else {
+                                        $error = oci_error($stid);
+                                        echo "Error registering user: " . $error['message'];
+                                    }
 
-    oci_free_statement($stid);
-    oci_close($connection);
-}
-?>
+                                    oci_free_statement($stid);
+                                    oci_close($connection);
+                                }
+                                ?>
 
 
                             <div class="d-flex justify-content-center text-center mt-4 pt-1">
@@ -143,9 +143,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="row text-center">
         <div class="col-md-8"><p>&copy; PhotoPlay. All rights reserved.</p></div>
         <ul class="list-inline footer-links">
-            <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/facebook.png"></a></li>
-            <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/signo-de-twitter.png"></a></li>
-            <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/instagram.png"></a></li>
+            <li class="list-inline-item"><a href="https://es-es.facebook.com/"><img width="40" height="40" src="/imagenes/facebook.png"></a></li>
+            <li class="list-inline-item"><a href="https://x.com/"><img width="40" height="40" src="/imagenes/signo-de-twitter.png"></a></li>
+            <li class="list-inline-item"><a href="https://www.instagram.com/"><img width="40" height="40" src="/imagenes/instagram.png"></a></li>
         </ul>
     </div>
 </footer>
