@@ -15,7 +15,7 @@
 <?php session_start(); ?>
 
 <header >
-    <?php include "menu.php"; ?>
+   
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #000000;">
         
         <a class="navbar-brand" href="index.html" ><img src="imagenes/preguntados2edit.png" id="logo-preguntados" width="150" height="150" class="d-inline-block align-center"></a>
@@ -51,14 +51,14 @@
 
 <footer class="footer bg-sucess text-center">
     <div class="row">
-        <div class="col-md-6"><p>&copy; PhotoPlay. All rights reserved.</p></div>
+    <p>&copy; <?php echo date("Y"); ?> PhotoPlay. All rights reserved.</p>
         <ul class="list-inline footer-links">
             <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/facebook.png"></a></li>
             <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/signo-de-twitter.png"></a></li>
             <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/instagram.png"></a></li>
         </ul>
         
-<p>&copy; <?php echo date("Y"); ?> PhotoPlay. All rights reserved.</p>
+
     </div>
 </footer>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
