@@ -7,7 +7,7 @@
 
             <li><a href="discografia.html">Discografía</a></li>
             
-            <li><a href="registro.html">Registro:</a> </li>
+            <li><a href="registro.html">Register:</a> </li>
             <li><a href="login.html">Login</a></li>
             
             
