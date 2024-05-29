@@ -89,6 +89,10 @@ body{
     margin-right: 20%;
 }
 
+#user-id{
+    display: none;
+}
+
 
 
 

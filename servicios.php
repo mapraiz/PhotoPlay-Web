@@ -44,6 +44,12 @@
        }else{
             echo false;
        }
+    }else if($funcion == "deleteScore"){
+        if(delete_score($_POST['id_usuario'],$_POST['score'],$_POST['fecha'])){
+            echo true;
+       }else{
+            echo false;
+       }
     }
     
 ?>

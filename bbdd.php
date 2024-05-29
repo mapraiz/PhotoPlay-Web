@@ -200,4 +200,26 @@ function get_user($username, $password) {
 
     return $row;
 }
+
+function delete_score($id_usuario,$score,$fecha){
+    $conn = connect_database();
+    
+    $sql = 'DELETE FROM puntuacion WHERE id_usuario = :id_usuario AND puntuacion = :puntuacion AND fecha = :fecha';
+    $stmt = oci_parse($conn, $sql);
+
+    oci_bind_by_name($stmt, ':id_usuario', $id_usuario);
+    oci_bind_by_name($stmt, ':puntuacion', $score);
+
+    $result = oci_execute($stmt, int $mode = OCI_COMMIT_ON_SUCCESS);
+
+    if (!$result) {
+        $error = oci_error($stmt);
+        echo "Error en la ejecución: " . $error['message'];
+        oci_free_statement($stmt);
+        oci_close($conn);
+        return false;
+    }
+
+    return true;
+}
 ?>

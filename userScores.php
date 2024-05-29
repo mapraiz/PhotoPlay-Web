@@ -97,6 +97,9 @@
                     </li> 
                 </ul>
             </div>
+            <?php
+                echo "<h3 class='user-id'>".$id_usuario."</h3>";
+            ?>
        
     </main>
 
