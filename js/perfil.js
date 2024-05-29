@@ -14,7 +14,7 @@ $(document).ready(function(){
             type: "POST",
             data: { function: "updateUsername", username:username, newUsername:newUsername},
             success: function(data){
-
+                
             }
         });
     })

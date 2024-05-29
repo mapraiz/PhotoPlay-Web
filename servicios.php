@@ -24,23 +24,26 @@
     if($funcion == "getScoreUsuario")
     {
         $scores_usuarios = obtenerEstadisticasUsuarios($arg);
+        $scores_usuarios = get_scores();
         $scoresUJson = json_encode($scores_usuarios, JSON_UNESCAPED_UNICODE);
         echo $scoresUJson;
-    } else if($funcion == "getJuegosCategoria")
+    } else if($funcion == "changeUsername")
     {
-        $juegos = get_juegos_categoria($_POST['idCategoria']);
-        $juegosJson = json_encode($juegos, JSON_UNESCAPED_UNICODE);
-        echo $juegosJson;
-    } else if($funcion == "getNombresJuegosCategoria")
+        if(change_username($_POST['username'],$_POST['newUsername'])){
+            echo true;
+        }
+        
+    } else if($funcion == "deleteUser")
     {
-        $juegos = get_titulos_juegos_categoria($_POST['idCategoria']);
-        $juegosJson = json_encode($juegos, JSON_UNESCAPED_UNICODE);
-        echo $juegosJson;
-    } else if($funcion == "getJuegoByID")
+        
+        
+    } else if($funcion == "changeScore")
     {
-        $juego = get_juegos_id($_POST['idJuego']);
-        $juegoJson = json_encode($juego, JSON_UNESCAPED_UNICODE);
-        echo $juegoJson;
+       if(change_score($_POST['score'],$_POST['newScore'],$_POST['fecha'],$_POST['newFecha'])){
+            echo true;
+       }else{
+            echo false;
+       }
     }
     
 ?>
