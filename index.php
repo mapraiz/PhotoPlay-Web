@@ -62,7 +62,7 @@
             <p>Sección Superior:
                 Izquierda: Los segundos que tienes para responder (10 segundos) y tu puntuación, que depende de la rapidez de tus respuestas. Puedes ganar hasta 450 puntos por pregunta, pero cada segundo que pasa, los puntos bajan 50. Si te equivocas, pierdes 150 puntos.
                 Derecha: Tres corazones que representan tus vidas. Cada vez que fallas o se acaba el tiempo, pierdes una vida.</p>
-            <img src="/Fotos/Pregunta.png" alt="Pregunta">
+            <img src="/Fotos/Pregunta.PNG" alt="Pregunta">
         </div>
         <div class="small-image-group">
             <img src="/Fotos/TiempoTerminado.PNG" alt="Tiempo Terminado">
