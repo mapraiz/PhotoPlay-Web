@@ -38,13 +38,6 @@
             <p>¡Bienvenido a Preguntados! En este juego, tus conocimientos de DAM se pondrán a prueba. Compite con otros jugadores para conseguir la puntuación más alta. ¿Podrás contestar todas las preguntas correctamente?</p>
         </div>
         <div class="image-left">
-    <img src="/PhotoPlay-Web/Juego/PanelInicial.PNG" alt="Panel Inicial">
-    <p>
-        Al abrir el juego, verás un panel donde necesitas iniciar sesión para jugar. Para crear una cuenta, ve a la sección 'Registrarse' en esta misma página y sigue los pasos. Con tu cuenta, podrás almacenar todos tus datos de juego. Sin iniciar sesión, solo podrás salir del juego o ver el Top 10 de mejores puntuaciones.
-    </p>
-</div>
-
-        <div class="image-left">
            <img src="/Juego/PanelInicial.PNG" alt="Panel Inicial">
         
             <p>Al abrir el juego, verás un panel donde necesitas iniciar sesión para jugar. Para crear una cuenta, ve a la sección 'Registrarse' en esta misma página y sigue los pasos. Con tu cuenta, podrás almacenar todos tus datos de juego. Sin iniciar sesión, solo podrás salir del juego o ver el Top 10 de mejores puntuaciones.</p>
