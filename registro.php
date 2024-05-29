@@ -12,13 +12,13 @@
 
 <header>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #685bd9;">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
             <img src="imagenes/preguntados2edit.png" id="logo-preguntados" width="150" height="150" class="d-inline-block align-center">
         </a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%" href="leaderboard.html">Leaderboard</a></li>
-                <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%" href="registro.html">Registro</a></li>
+                <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%" href="leaderboard.php">Leaderboard</a></li>
+                <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%" href="registro.php">Register</a></li>
                 <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%" href="login.php">Login</a></li>
             </ul>
         </div>
@@ -32,11 +32,11 @@
                 <div class="card bg-custom-1 text-white" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
                         <div class="mb-md-5 mt-md-4 pb-5">
-                            <h2 class="fw-bold mb-2 text-uppercase">Registro</h2>
+                            <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
                             <p class="text-white-50 mb-5">Please enter your username and password!</p>
 
 
-                            <form action="login.php" method="get">
+                            <form action="registro.php" method="post">
                                 <div class="form-outline form-white mb-4">
                                     <input type="text" id="typeUsernameX" name="username" class="form-control form-control-lg" required />
                                     <label class="form-label" for="typeUsernameX">Username</label>
@@ -46,8 +46,12 @@
                                     <input type="password" id="typePasswordX" name="password" class="form-control form-control-lg" required />
                                     <label class="form-label" for="typePasswordX">Password</label>
                                 </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input type="password" id="typePasswordX" name="password" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typePasswordX">Repeat Password</label>
+                                </div>
 
-                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Register</button>
                             </form>
 
                             <div class="d-flex justify-content-center text-center mt-4 pt-1">
@@ -58,7 +62,7 @@
                         </div>
 
                         <div>
-                            <p class="mb-0">Don't have an account? <a href="registro.html" class="text-white">Sign Up</a></p>
+                            <p class="mb-0">Do you have an account? <a href="login.php" class="text-white">Login</a></p>
                         </div>
 
                     </div>
