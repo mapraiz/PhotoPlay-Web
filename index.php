@@ -34,13 +34,10 @@
 <main role="main" class="innercover">
     <div class="container-fluid bg-dark">
         <div class="row">
-            <div class="col-md text-white">
-              One of three columns
-            </div>
             <div class="col-lg text-white text-wrap">
               <h2 class="text-left text-decoration-underline">Preguntados</h2>
               <p class="lh-lg">Preguntados es un juego en el que tus conocimientos de DAM se pondran a prueba. Compite con otros jugadores para conseguir la puntuación mas alta. 
-                Puedes contestar a todas las preguntas correctamente?
+                ¿Puedes contestar a todas las preguntas correctamente?
               </p>
             </div>
            
@@ -57,9 +54,9 @@
 
         </div>
         <div class="footer-links">
-        <li class="list-inline-item"><a href="https://es-es.facebook.com/"><img width="40" height="40" src="/imagenes/facebook.png"></a></li>
-                <li class="list-inline-item"><a href="https://x.com/"><img width="40" height="40" src="/imagenes/signo-de-twitter.png"></a></li>
-                <li class="list-inline-item"><a href="https://www.instagram.com/"><img width="40" height="40" src="/imagenes/instagram.png"></a></li>
+            <li class="list-inline-item"><a href="https://es-es.facebook.com/"><img width="40" height="40" src="/imagenes/facebook.png"></a></li>
+            <li class="list-inline-item"><a href="https://x.com/"><img width="40" height="40" src="/imagenes/signo-de-twitter.png"></a></li>
+            <li class="list-inline-item"><a href="https://www.instagram.com/"><img width="40" height="40" src="/imagenes/instagram.png"></a></li>
         </div>
     </div>
 </footer>
