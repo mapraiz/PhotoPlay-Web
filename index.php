@@ -66,7 +66,7 @@
         </div>
         <div class="small-image-group">
             <img src="/Fotos/TiempoTerminado.PNG" alt="Tiempo Terminado">
-            <img src="/Fotos/2vidas.PNG" alt="2 Vidas">
+            <img src="/Fotos/2 vidas.PNG" alt="2 Vidas">
             <img src="/Fotos/1 vida.PNG" alt="1 Vida">
         </div>
         <div class="text-section">
