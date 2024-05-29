@@ -150,7 +150,7 @@ function get_scores() {
 function login($username, $password) {
     $conn = connect_database();
     
-    $sql = "SELECT id_usuario FROM usuario WHERE username = :username AND contraseña = :password";
+    $sql = "SELECT id_usuario FROM usuario WHERE username = :username AND contrasena = :password";
     $stmt = oci_parse($conn, $sql);
 
     oci_bind_by_name($stmt, ':username', $username);
@@ -176,7 +176,7 @@ function login($username, $password) {
 function get_user($username, $password) {
     $conn = connect_database();
     
-    $sql = 'SELECT * FROM usuario WHERE username = :username AND contraseña = :password';
+    $sql = 'SELECT * FROM usuario WHERE username = :username AND contrasena = :password';
     $stmt = oci_parse($conn, $sql);
 
     oci_bind_by_name($stmt, ':username', $username);
