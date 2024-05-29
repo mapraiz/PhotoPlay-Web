@@ -30,7 +30,7 @@
             </ul>
         </div>
     </nav>
-</header>
+
 <body>
 <div class="container">
         <div class="text-section">
@@ -87,7 +87,7 @@
         </div>
     </div>
 </body>
-
+</header>
 
     <footer class="footer">
     <div class="row text-center">
