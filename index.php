@@ -18,7 +18,7 @@
    
     <nav class="navbar navbar-expand-lg navbar-light purple-bg">
         
-        <a class="navbar-brand" href="index.html" ><img src="imagenes/preguntados2edit.png" id="logo-preguntados" width="150" height="150" class="d-inline-block align-center"></a>
+        <a class="navbar-brand" href="index.php" ><img src="imagenes/preguntados2edit.png" id="logo-preguntados" width="150" height="150" class="d-inline-block align-center"></a>
         <div clas="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item px-5"><a class="text-white text-decoration-none " style="font-size: 200%"  href="leaderboard.php">Leaderboard</a></li>
@@ -31,20 +31,9 @@
         </div>
     </nav>
 </header>
-<main role="main" class="innercover">
-    <div class="container-fluid bg-dark">
-        <div class="row">
-            <div class="col-lg text-white text-wrap">
-              <h2 class="text-left text-decoration-underline">Preguntados</h2>
-              <p class="lh-lg">Preguntados es un juego en el que tus conocimientos de DAM se pondran a prueba. Compite con otros jugadores para conseguir la puntuación mas alta. 
-                ¿Puedes contestar a todas las preguntas correctamente?
-              </p>
-            </div>
-           
-          </div>
-    </div>
-
-</main>
+<body>
+    
+</body>
 
 
     <footer class="footer">

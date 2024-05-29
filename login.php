@@ -13,7 +13,7 @@
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #685bd9;">
-            <a class="navbar-brand" href="index.html"><img src="imagenes/preguntados2edit.png" id="logo-preguntados" width="150" height="150" class="d-inline-block align-center"></a>
+            <a class="navbar-brand" href="index.php"><img src="imagenes/preguntados2edit.png" id="logo-preguntados" width="150" height="150" class="d-inline-block align-center"></a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%" href="leaderboard.php">Leaderboard</a></li>
@@ -66,7 +66,7 @@
                                             if ($row = oci_fetch_array($stid, OCI_ASSOC)) {
                                                 $_SESSION['username'] = $username;
                                                 // Redirigir al usuario a perfil.php
-                                                header("Location: perfil.html");
+                                                header("Location: perfil.php");
                                                 exit();
                                             } else {
                                                 $loginMessage = "Nombre de usuario o contraseña inválidos";
