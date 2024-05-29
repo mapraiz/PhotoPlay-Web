@@ -3,35 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PhotoPlay</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/comun.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
-<body>
+<body class="text-center">
+    
 <?php session_start(); ?>
-<header>
-    <div class="logo">
-        <img src="images/logo.png" alt="PhotoPlay">
-    </div>
+
+<header >
     <?php include "menu.php"; ?>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #000000;">
+        
+        <a class="navbar-brand" href="index.html" ><img src="imagenes/preguntados2edit.png" id="logo-preguntados" width="150" height="150" class="d-inline-block align-center"></a>
+        <div clas="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item px-5"><a class="text-white text-decoration-none " style="font-size: 200%"  href="leaderboard.html">Leaderboard</a></li>
+                <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%"   href="registro.php">Register</a> </li>
+                <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%"   href="login.php">Login</a></li>
+            </ul>
+            <ul class="right">
+                
+            </ul>
+        </div>
+    </nav>
 </header>
-<main>
-    <div class="container-fluid">
-        <h1>PhotoPlay</h1>
+<main role="main" class="innercover">
+    <div class="container-fluid bg-dark">
+        <div class="row">
+            <div class="col-md text-white">
+              One of three columns
+            </div>
+            <div class="col-lg text-white text-wrap">
+              <h2 class="text-left text-decoration-underline">Preguntados</h2>
+              <p class="lh-lg">Preguntados es un juego en el que tus conocimientos de DAM se pondran a prueba. Compite con otros jugadores para conseguir la puntuación mas alta. 
+                Puedes contestar a todas las preguntas correctamente?
+              </p>
+            </div>
+           
+          </div>
     </div>
 
 </main>
 
-<footer class="footer">
-    <ul>
-        <li><a href="#">Facebook</a></li>
-        <li><a href="#">Twitter</a></li>
-        <li><a href="#">Instagram</a></li>
-    </ul>
-    <p>&copy; <?php echo date("Y"); ?> PhotoPlay. All rights reserved.</p>
+<footer class="footer bg-sucess text-center">
+    <div class="row">
+        <div class="col-md-6"><p>&copy; PhotoPlay. All rights reserved.</p></div>
+        <ul class="list-inline footer-links">
+            <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/facebook.png"></a></li>
+            <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/signo-de-twitter.png"></a></li>
+            <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/instagram.png"></a></li>
+        </ul>
+        
+<p>&copy; <?php echo date("Y"); ?> PhotoPlay. All rights reserved.</p>
+    </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/jquery-3.7.1.min.js"></script>
 </body>
 </html>
