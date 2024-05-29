@@ -3,12 +3,12 @@
         <ul>
             <li><a href="index.php">Inicio</a></li>
            
-            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="leaderboard.php">Leaderboard</a></li>
 
-            <li><a href="discografia.html">Discografía</a></li>
+            <li><a href="discografia.php">Discografía</a></li>
             
-            <li><a href="registro.html">Register:</a> </li>
-            <li><a href="login.html">Login</a></li>
+            <li><a href="registro.php">Register:</a> </li>
+            <li><a href="login.php">Login</a></li>
             
             
         </ul>
@@ -17,7 +17,7 @@
               session_start();
               $user = $_SESSION["user"];
             if (!isset($_SESSION['id_usuario'])) {
-                echo '<li><a href="login.html">Login</a></li>';
+                echo '<li><a href="login.php">Login</a></li>';
             } else {
                 echo '<li><a href="logout.php">Logout</a></li>';
                 echo '<li><a href="gestion.php">Gestión</a></li>';

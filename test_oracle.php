@@ -8,6 +8,7 @@ try {
     }
 
     echo "Conexión a Oracle establecida correctamente";
+    var_dump("hjdfshdsfudshfdshf");
 } catch (Exception $e) {
     echo "No se pudo establecer la conexión a Oracle: " . $e->getMessage();
 } finally {

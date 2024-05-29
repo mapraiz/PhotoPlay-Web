@@ -14,7 +14,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #685bd9;">
         
-            <a class="navbar-brand" href="index.html" ><img src="imagenes/preguntados2edit.png" id="logo-preguntados" width="150" height="150" class="d-inline-block align-center"></a>
+            <a class="navbar-brand" href="index.php" ><img src="imagenes/preguntados2edit.png" id="logo-preguntados" width="150" height="150" class="d-inline-block align-center"></a>
             <div clas="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     
