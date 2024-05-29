@@ -132,6 +132,47 @@ function connect_database()
         $oci->close();
         return $users;
     }
+
+    function get_current_username($id_usuario){
+          
+        $oci = connect_database();
+        
+        $sql = "SELECT username FROM usuario WHERE id_usuario= :id_usuario";
+        $sentencia = oci_parse($oci, $sql);
+        if(!oci_execute($sentencia))
+        {
+            echo "Fallo en la preparación de la sentencia: ".$oci->errno;
+        }
+        
+        $asignar = oci_bind_by_name($sentencia, ':id_usuario', $id_usuario, );
+        if(!$asignar)
+        {
+            echo "Fallo en la asignacion de parametros ".$oci->errno;
+        }
+        
+        
+        $ejecucion = oci_execute($sentencia);
+        if(!$ejecucion)
+        {
+            echo "Fallo en la ejecucion: ".$oci->errno;
+        }
+        $curs = oci_new_cursor($oci);
+        oci_execute($curs);
+        
+        
+
+        
+        $username = "";
+        
+       
+        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+            
+            $username = $row['username']
+        }
+       
+        $oci->close();
+        return $username;
+    }
     function get_scores_user($id_usuario)
     {
         
@@ -223,56 +264,7 @@ function connect_database()
     }
     
 
-    function get_juegos_id($idJuego)
-    {
-        
-        $mysqli = connect_database();
-        
-        $sql = "SELECT * FROM Juego WHERE id_juego = ?";
-        $sentencia = $mysqli->prepare($sql);
-        if(!$sentencia)
-        {
-            echo "Fallo en la preparación de la sentencia: ".$mysqli->errno;
-        }
-
-        $asignar = $sentencia->bind_param("i",$idJuego);
-        if(!$asignar)
-        {
-            echo "Fallo en la asignacion de parametros ".$mysqli->errno;
-        }
-        
-        $ejecucion = $sentencia->execute();
-        if(!$ejecucion)
-        {
-            echo "Fallo en la ejecucion: ".$mysqli->errno;
-        }
-        
-        $juego = array();
-
-        $id_juego = -1;
-        $titulo = "";
-        $descripcion = "";
-        $imagen = "";
-        $precio = -1;
-        $enlace = "";
-        $id_categoria = -1;
-        $id_user = -1;
-        $vincular = $sentencia->bind_result($id_juego, $titulo, $descripcion, $imagen, $precio,
-                                    $enlace, $id_categoria, $id_user);
-        
-        if(!$vincular)
-        {
-            echo "Fallo al vincular la sentencia: ".$mysqli->errno;
-        }
-        if($sentencia->fetch())
-        {
-            $juego = array('idJuego' => $id_juego, 'titulo' => $titulo, 'descripcion' => $descripcion,
-                            'imagen' => $imagen, 'precio' => $precio, 'enlace' => $enlace,
-                        'idCategoria' => $id_categoria);
-        }
-        $mysqli->close();
-        return $juego;
-    }
+    
     
     function login($user, $password)
     {
