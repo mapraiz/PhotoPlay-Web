@@ -38,7 +38,7 @@
             <p>¡Bienvenido a Preguntados! En este juego, tus conocimientos de DAM se pondrán a prueba. Compite con otros jugadores para conseguir la puntuación más alta. ¿Podrás contestar todas las preguntas correctamente?</p>
         </div>
         <div class="image-left">
-            <img src="/imagenes/Juego/PanelInicial.png" alt="Panel Inicial">
+            <img src="imagenes/Juego/PanelInicial.png" alt="Panel Inicial">
             <p>Al abrir el juego, verás un panel donde necesitas iniciar sesión para jugar. Para crear una cuenta, ve a la sección 'Registrarse' en esta misma página y sigue los pasos. Con tu cuenta, podrás almacenar todos tus datos de juego. Sin iniciar sesión, solo podrás salir del juego o ver el Top 10 de mejores puntuaciones.</p>
         </div>
         <div class="image-right">
@@ -66,7 +66,7 @@
         <div class="small-image-group">
             <img src="/imagenes/Juego/TiempoTerminado.PNG" alt="Tiempo Terminado">
             <img src="/imagenes/Juego/2vidas.PNG" alt="2 Vidas">
-            <img src="/imagenes/Juego/1vida.PNG" alt="1 Vida">
+            <img src="/imagenes/Juego/1 vida.PNG" alt="1 Vida">
         </div>
         <div class="text-section">
             <p>Sección Media:
