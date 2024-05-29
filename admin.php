@@ -21,7 +21,7 @@
                 
             
                 <li class="nav-item px-5"><a class="text-white text-decoration-none " style="font-size: 200%"  href="leaderboard.html">Leaderboard</a></li>
-                <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%"   href="registro.html">Registro</a> </li>
+                <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%"   href="registro.html">Register</a> </li>
                 <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%"   href="login.html">Login</a></li>
                 
                 

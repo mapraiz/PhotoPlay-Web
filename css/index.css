@@ -3,7 +3,9 @@ html, body {
     margin: 0;
     padding: 0;
 }
-
+header{
+    background-color:#685bd9; /
+}
 body {
     display: flex;
     flex-direction: column;
@@ -34,15 +36,29 @@ header nav a:hover {
     line-height: 1.75;
 }
 
-footer .footer-links a img {
-    width: 30px;
-    height: 30px;
-}
-
 .footer {
-    background-color: #000000; /* color de fondo para el pie de página */
+    background-color: #685bd9; /* color de fondo para el pie de página */
     padding: 10px 0;
     width: 100%;
     text-align: center;
     margin-top: auto;
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    flex-direction: column; /* Arrange children elements in a column */
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center; /* Horizontally center the links */
+    padding-top: 10px; /* Optional: add some space above the links */
+}
+
+.footer-links a {
+    margin: 0 10px; /* Add some space between the links */
+}
+
+.footer-links a img {
+    width: 30px;
+    height: 30px;
 }

@@ -16,8 +16,8 @@
             <a class="navbar-brand" href="index.html"><img src="imagenes/preguntados2edit.png" id="logo-preguntados" width="150" height="150" class="d-inline-block align-center"></a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%" href="leaderboard.html">Leaderboard</a></li>
-                    <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%" href="registro.html">Registro</a></li>
+                    <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%" href="leaderboard.php">Leaderboard</a></li>
+                    <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%" href="registro.php">Register</a></li>
                     <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%" href="login.php">Login</a></li>
                 </ul>
             </div>
@@ -102,7 +102,7 @@
                             </div>
 
                             <div>
-                                <p class="mb-0">Don't have an account? <a href="registro.html" class="text-white">Sign Up</a></p>
+                                <p class="mb-0">Don't have an account? <a href="registro.php" class="text-white">Sign Up</a></p>
                             </div>
 
                         </div>
@@ -116,9 +116,9 @@
         <div class="row text-center">
             <div class="col-md-8"><p>&copy; PhotoPlay. All rights reserved.</p></div>
             <ul class="list-inline footer-links">
-                <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/facebook.png"></a></li>
-                <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/signo-de-twitter.png"></a></li>
-                <li class="list-inline-item"><a href="#"><img width="40" height="40" src="/imagenes/instagram.png"></a></li>
+                <li class="list-inline-item"><a href="https://es-es.facebook.com/"><img width="40" height="40" src="/imagenes/facebook.png"></a></li>
+                <li class="list-inline-item"><a href="https://x.com/"><img width="40" height="40" src="/imagenes/signo-de-twitter.png"></a></li>
+                <li class="list-inline-item"><a href="https://www.instagram.com/"><img width="40" height="40" src="/imagenes/instagram.png"></a></li>
             </ul>
         </div>
     </footer>
