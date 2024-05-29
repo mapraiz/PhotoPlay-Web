@@ -12,324 +12,189 @@ function connect_database()
         $error = oci_error();
         echo "Oracle connection error: " . $error['message'];
         exit;
-    }else{
+    } else {
         echo "Oracle connection success";
     }
+    return $conn;
+}
 
+function change_username($username, $newUsername) {
+    $conn = connect_database();
     
-   
-    function change_username($username, $newUsername){
-        $oci = connect_database();
-        
-        $sql = "UPDATE usuario SET username=? WHERE username=?";
-        $sentencia = oci_parse($oci, $sql);
-        if(!oci_execute($sentencia))
-        {
-            echo "Fallo en la preparación de la sentencia: ".$oci->errno;
-            return false;
-        }
+    $sql = "UPDATE usuario SET username = :newUsername WHERE username = :username";
+    $stmt = oci_parse($conn, $sql);
 
-        $asignar = $sentencia->bind_param("ss", $username, $newUsername);
-        if(!$asignar)
-        {
-            echo "Fallo en la asignacion de parametros ".$oci->errno;
-            return false;
-        }
-        
-        $ejecucion = $sentencia->execute();
-        if(!$ejecucion)
-        {
-            echo "Fallo en la ejecucion: ".$oci->errno;
-            return false;
-        }else{
-            return true;
-        }
+    oci_bind_by_name($stmt, ':newUsername', $newUsername);
+    oci_bind_by_name($stmt, ':username', $username);
 
-        
-        
+    $result = oci_execute($stmt);
+
+    if (!$result) {
+        $error = oci_error($stmt);
+        echo "Error en la ejecución: " . $error['message'];
+        oci_free_statement($stmt);
+        oci_close($conn);
+        return false;
     }
 
-    function change_score($score, $newScore, $fecha, $newFecha){
-        $oci = connect_database();
-        
-        $sql = "UPDATE partida SET puntuacion= :newPuntuacion , fecha= :newFecha WHERE puntuacion= :puntuacion, fecha= :fecha";
-        $sentencia = oci_parse($oci, $sql);
-        if(!oci_execute($sentencia))
-        {
-            echo "Fallo en la preparación de la sentencia: ".$oci->errno;
-            return false;
-        }
-        $ba = array(':newPuntuacion' => $newScore, ':newFecha' => $newFecha, ':puntuacion' => $score, ':fecha' => $fecha);
+    oci_free_statement($stmt);
+    oci_close($conn);
+    return true;
+}
 
-        foreach ($ba as $key => $val) {
-
-            // oci_bind_by_name($stid, $key, $val) does not work
-            // because it binds each placeholder to the same location: $val
-            // instead use the actual location of the data: $ba[$key]
-            $asignar=oci_bind_by_name($sentencia, $key, $ba[$key]);
-            if(!$asignar)
-            {
-                echo "Fallo en la asignacion de parametros ".$oci->errno;
-            }
-        }
-       
-
-       
-        
-        $ejecucion = $sentencia->execute();
-        if(!$ejecucion)
-        {
-            echo "Fallo en la ejecucion: ".$oci->errno;
-            return false;
-        }else{
-            return true;
-        }
-
-        
-        
-    }
-
-
-    function get_users()
-    {
-        
-        $oci = connect_database();
-        
-        $sql = "SELECT * FROM usuario";
-        $sentencia = oci_parse($oci, $sql);
-        if(!oci_execute($sentencia))
-        {
-            echo "Fallo en la preparación de la sentencia: ".$oci->errno;
-        }
-       
-        
-        
-        $ejecucion = $sentencia->execute();
-        if(!$ejecucion)
-        {
-            echo "Fallo en la ejecucion: ".$oci->errno;
-        }
-        
-        $users = array();
-
-        $id_usuario = -1;
-        $username = "";
-        $contraseña = "";
-        $admin = -1;
-       
-        $vincular = $sentencia->bind_result($id_usuario, $username, $contraseña, $admin);
-        
-        if(!$vincular)
-        {
-            echo "Fallo al vincular la sentencia: ".$oci->errno;
-        }
-        while($sentencia->fetch())
-        {
-            $user = array('id_usuario' => $id_usuario, 'username' => $username, 'contraseña' => $contraseña,
-                            'admin' => $admin);
-            $users[] = $user;
-        }
-        $oci->close();
-        return $users;
-    }
-    function get_scores_user($id_usuario)
-    {
-        
-        $oci = connect_database();
-        
-        $sql = "SELECT * FROM partida WHERE id_usuario= :id_usuario";
-        $sentencia = oci_parse($oci, $sql);
-        if(!oci_execute($sentencia))
-        {
-            echo "Fallo en la preparación de la sentencia: ".$oci->errno;
-        }
-        
-        $asignar = oci_bind_by_name($sentencia, ':id_usuario', $id_usuario);
-        if(!$asignar)
-        {
-            echo "Fallo en la asignacion de parametros ".$oci->errno;
-        }
-        
-        
-        $ejecucion = oci_execute($sentencia);
-        if(!$ejecucion)
-        {
-            echo "Fallo en la ejecucion: ".$oci->errno;
-        }
-        
-        $scores = array();
-
-        $id_partida = -1;
-        $fecha = "";
-        $puntuacion = "";
-        $id_usuario = -1;
-       
-        $vincular = $sentencia->bind_result($id_partida, $fecha, $puntuacion, $id_usuario);
-        
-        if(!$vincular)
-        {
-            echo "Fallo al vincular la sentencia: ".$oci->errno;
-        }
-        while($sentencia->fetch())
-        {
-            $score = array('id_partida' => $id_partida, 'fecha' => $fecha, 'puntuacion' => $puntuacion,
-                            'id_usuario' => $id_usuario);
-            $scores[] = $score;
-        }
-        $oci->close();
-        return $scores;
-    }
-
-    function get_scores()
-    {
-        
-        $oci = connect_database();
-        
-        $sql = "SELECT usuario.username, partida.puntuacion FROM partida INNER JOIN usuario ON partida.id_usuario = usuario.id_usuario";
-        $sentencia = oci_parse($oci, $sql);
-        if(!oci_execute($sentencia))
-        {
-            echo "Fallo en la preparación de la sentencia: ".$oci->errno;
-        }
-       
-        
-        
-        $ejecucion = $sentencia->execute();
-        if(!$ejecucion)
-        {
-            echo "Fallo en la ejecucion: ".$oci->errno;
-        }
-        
-        $scores = array();
-
-        $username= "";
-        
-        $puntuacion = "";
-        
-       
-        $vincular = $sentencia->bind_result($username, $puntuacion);
-        
-        if(!$vincular)
-        {
-            echo "Fallo al vincular la sentencia: ".$oci->errno;
-        }
-        while($sentencia->fetch())
-        {
-            $score = array('username' => $username, 'puntuacion' => $puntuacion);
-            $scores[] = $score;
-        }
-        $oci->close();
-        return $scores;
-    }
+function change_score($score, $newScore, $fecha, $newFecha) {
+    $conn = connect_database();
     
+    $sql = "UPDATE partida SET puntuacion = :newPuntuacion, fecha = :newFecha WHERE puntuacion = :puntuacion AND fecha = :fecha";
+    $stmt = oci_parse($conn, $sql);
+    oci_bind_by_name($stmt, ':newPuntuacion', $newScore);
+    oci_bind_by_name($stmt, ':newFecha', $newFecha);
+    oci_bind_by_name($stmt, ':puntuacion', $score);
+    oci_bind_by_name($stmt, ':fecha', $fecha);
 
-    function get_juegos_id($idJuego)
-    {
-        
-        $mysqli = connect_database();
-        
-        $sql = "SELECT * FROM Juego WHERE id_juego = ?";
-        $sentencia = $mysqli->prepare($sql);
-        if(!$sentencia)
-        {
-            echo "Fallo en la preparación de la sentencia: ".$mysqli->errno;
-        }
+    $result = oci_execute($stmt);
 
-        $asignar = $sentencia->bind_param("i",$idJuego);
-        if(!$asignar)
-        {
-            echo "Fallo en la asignacion de parametros ".$mysqli->errno;
-        }
-        
-        $ejecucion = $sentencia->execute();
-        if(!$ejecucion)
-        {
-            echo "Fallo en la ejecucion: ".$mysqli->errno;
-        }
-        
-        $juego = array();
-
-        $id_juego = -1;
-        $titulo = "";
-        $descripcion = "";
-        $imagen = "";
-        $precio = -1;
-        $enlace = "";
-        $id_categoria = -1;
-        $id_user = -1;
-        $vincular = $sentencia->bind_result($id_juego, $titulo, $descripcion, $imagen, $precio,
-                                    $enlace, $id_categoria, $id_user);
-        
-        if(!$vincular)
-        {
-            echo "Fallo al vincular la sentencia: ".$mysqli->errno;
-        }
-        if($sentencia->fetch())
-        {
-            $juego = array('idJuego' => $id_juego, 'titulo' => $titulo, 'descripcion' => $descripcion,
-                            'imagen' => $imagen, 'precio' => $precio, 'enlace' => $enlace,
-                        'idCategoria' => $id_categoria);
-        }
-        $mysqli->close();
-        return $juego;
+    if (!$result) {
+        $error = oci_error($stmt);
+        echo "Error en la ejecución: " . $error['message'];
+        oci_free_statement($stmt);
+        oci_close($conn);
+        return false;
     }
+
+    oci_free_statement($stmt);
+    oci_close($conn);
+    return true;
+}
+
+function get_users() {
+    $conn = connect_database();
     
-    function login($user, $password)
-    {
-        $mysqli = connect_database();
+    $sql = "SELECT * FROM usuario";
+    $stmt = oci_parse($conn, $sql);
 
-        $sql = "SELECT id_usuario FROM usuarios WHERE usuario = ? 
-            AND contraseña = ?";
-            
-        $sentencia = $mysqli->prepare($sql);
-        if(!$sentencia)
-        {
-            echo "Fallo en la preparación de la sentencia".$mysqli->errno;
-        }
+    $result = oci_execute($stmt);
 
-        $asignar = $sentencia->bind_param("ss", $user, $password);
-        if(!$asignar)
-        {
-            echo "Fallo en la asignación ".$mysqli->errno;
-        }
-
-        $ejecucion = $sentencia->execute();
-        if(!$ejecucion)
-        {
-            echo "Fallo en la ejecución ".$mysqli->errno;
-        }
-
-        $usuario = -1;
-        $vincular = $sentencia->bind_result($usuario);
-        if(!$vincular)
-        {
-            echo "Fallo al asociar parámetros ".$mysqli->errno;
-        }
-
-        $result = false;
-        if($sentencia->fetch())
-        {
-            $result = $usuario;
-        }
-
-        $mysqli->close();
-        return $result;
+    if (!$result) {
+        $error = oci_error($stmt);
+        echo "Error en la ejecución: " . $error['message'];
+        oci_free_statement($stmt);
+        oci_close($conn);
+        return [];
     }
 
+    $users = [];
+    while ($row = oci_fetch_assoc($stmt)) {
+        $users[] = $row;
+    }
 
-function get_user($conn, $username, $password)
-{
-    $sql = 'SELECT * FROM users WHERE username = :username AND password = :password';
+    oci_free_statement($stmt);
+    oci_close($conn);
+    return $users;
+}
 
+function get_scores_user($id_usuario) {
+    $conn = connect_database();
+    
+    $sql = "SELECT * FROM partida WHERE id_usuario = :id_usuario";
+    $stmt = oci_parse($conn, $sql);
+
+    oci_bind_by_name($stmt, ':id_usuario', $id_usuario);
+
+    $result = oci_execute($stmt);
+
+    if (!$result) {
+        $error = oci_error($stmt);
+        echo "Error en la ejecución: " . $error['message'];
+        oci_free_statement($stmt);
+        oci_close($conn);
+        return [];
+    }
+
+    $scores = [];
+    while ($row = oci_fetch_assoc($stmt)) {
+        $scores[] = $row;
+    }
+
+    oci_free_statement($stmt);
+    oci_close($conn);
+    return $scores;
+}
+
+function get_scores() {
+    $conn = connect_database();
+    
+    $sql = "SELECT usuario.username, partida.puntuacion FROM partida INNER JOIN usuario ON partida.id_usuario = usuario.id_usuario";
+    $stmt = oci_parse($conn, $sql);
+
+    $result = oci_execute($stmt);
+
+    if (!$result) {
+        $error = oci_error($stmt);
+        echo "Error en la ejecución: " . $error['message'];
+        oci_free_statement($stmt);
+        oci_close($conn);
+        return [];
+    }
+
+    $scores = [];
+    while ($row = oci_fetch_assoc($stmt)) {
+        $scores[] = $row;
+    }
+
+    oci_free_statement($stmt);
+    oci_close($conn);
+    return $scores;
+}
+
+function login($username, $password) {
+    $conn = connect_database();
+    
+    $sql = "SELECT id_usuario FROM usuario WHERE username = :username AND contraseña = :password";
     $stmt = oci_parse($conn, $sql);
 
     oci_bind_by_name($stmt, ':username', $username);
     oci_bind_by_name($stmt, ':password', $password);
 
-    oci_execute($stmt);
+    $result = oci_execute($stmt);
+
+    if (!$result) {
+        $error = oci_error($stmt);
+        echo "Error en la ejecución: " . $error['message'];
+        oci_free_statement($stmt);
+        oci_close($conn);
+        return false;
+    }
+
+    $user = oci_fetch_assoc($stmt);
+    oci_free_statement($stmt);
+    oci_close($conn);
+
+    return $user ? $user['id_usuario'] : false;
+}
+
+function get_user($username, $password) {
+    $conn = connect_database();
+    
+    $sql = 'SELECT * FROM usuario WHERE username = :username AND contraseña = :password';
+    $stmt = oci_parse($conn, $sql);
+
+    oci_bind_by_name($stmt, ':username', $username);
+    oci_bind_by_name($stmt, ':password', $password);
+
+    $result = oci_execute($stmt);
+
+    if (!$result) {
+        $error = oci_error($stmt);
+        echo "Error en la ejecución: " . $error['message'];
+        oci_free_statement($stmt);
+        oci_close($conn);
+        return false;
+    }
 
     $row = oci_fetch_assoc($stmt);
     oci_free_statement($stmt);
+    oci_close($conn);
 
     return $row;
 }
