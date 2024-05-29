@@ -49,7 +49,6 @@
 
 </main>
 
-//error
 
     <footer class="footer">
     <div class="row text-center">
