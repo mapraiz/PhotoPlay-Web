@@ -44,16 +44,16 @@
         </div>
         <div class="image-right">
             <p>Una vez que inicies sesión, el juego te llevará a otro panel con los diferentes temas disponibles. Como el juego se basa en niveles y temas, al principio solo tendrás un tema desbloqueado. Esto se indicará con un mensaje en la pantalla.</p>
-            <img src="/Fotos/PanelTop10.png" alt="Panel Top 10">
+            <img src="/Fotos/PanelTop10.PNG" alt="Panel Top 10">
         </div>
         <div class="image-centered">
-            <img src="/Fotos/Desbloqueo.png" alt="Desbloqueo">
+            <img src="/Fotos/Desbloqueo.PNG" alt="Desbloqueo">
         </div>
         <div class="image-group">
-            <img src="/Fotos/1TemasBloqueados.png" alt="Tema 1 Bloqueado">
-            <img src="/Fotos/2TemasBloqueados.png" alt="Tema 2 Bloqueado">
-            <img src="/Fotos/3TemasBloqueados.png" alt="Tema 3 Bloqueado">
-            <img src="/Fotos/4TemasBloqueados.png" alt="Tema 4 Bloqueado">
+            <img src="/Fotos/1TemasBloqueados.PNG" alt="Tema 1 Bloqueado">
+            <img src="/Fotos/2TemasBloqueados.PNG" alt="Tema 2 Bloqueado">
+            <img src="/Fotos/3TemasBloqueados.PNG" alt="Tema 3 Bloqueado">
+            <img src="/Fotos/4TemasBloqueados.PNG" alt="Tema 4 Bloqueado">
         </div>
         <div class="text-section">
             <p>Para desbloquear nuevos temas, necesitas responder correctamente a 9 preguntas del tema actual. Cada panel de preguntas tiene tres secciones: arriba, en el medio y abajo.</p>
@@ -76,9 +76,9 @@
                 Dos botones: 'Volver' para regresar al panel de elección de temas, el cual si algún tema ha sido superado y se quiere volver a acceder ahí, no se puede porque el tema se bloquea y aparece un mensaje indicando que el tema ha sido superado, y 'Corregir' para comprobar tu respuesta. Si la respuesta es incorrecta, verás cuál era la correcta.</p>
         </div>
         <div class="small-image-group">
-            <img src="/Fotos/PreguntaCorrecta.png" alt="Pregunta Correcta">
-            <img src="/Fotos/PreguntaIncorrecta.png" alt="Pregunta Incorrecta">
-            <img src="/Fotos/TemaSuperado.png" alt="Tema Superado">
+            <img src="/Fotos/PreguntaCorrecta.PNG" alt="Pregunta Correcta">
+            <img src="/Fotos/PreguntaIncorrecta.PNG" alt="Pregunta Incorrecta">
+            <img src="/Fotos/TemaSuperado.PNG" alt="Tema Superado">
         </div>
         <div class="text-section">
             <p>Final del Juego:
