@@ -64,9 +64,9 @@
             <img src="/imagenes/Juego/Pregunta.png" alt="Pregunta">
         </div>
         <div class="small-image-group">
-            <img src="/imagenes/Juego/TiempoTerminado.png" alt="Tiempo Terminado">
-            <img src="/imagenes/Juego/2vidas.png" alt="2 Vidas">
-            <img src="/imagenes/Juego/1vida.png" alt="1 Vida">
+            <img src="/imagenes/Juego/TiempoTerminado.PNG" alt="Tiempo Terminado">
+            <img src="/imagenes/Juego/2vidas.PNG" alt="2 Vidas">
+            <img src="/imagenes/Juego/1vida.PNG" alt="1 Vida">
         </div>
         <div class="text-section">
             <p>Sección Media:
