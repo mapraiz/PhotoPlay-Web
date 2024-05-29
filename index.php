@@ -38,22 +38,29 @@
             <p>¡Bienvenido a Preguntados! En este juego, tus conocimientos de DAM se pondrán a prueba. Compite con otros jugadores para conseguir la puntuación más alta. ¿Podrás contestar todas las preguntas correctamente?</p>
         </div>
         <div class="image-left">
+    <img src="/PhotoPlay-Web/Juego/PanelInicial.PNG" alt="Panel Inicial">
+    <p>
+        Al abrir el juego, verás un panel donde necesitas iniciar sesión para jugar. Para crear una cuenta, ve a la sección 'Registrarse' en esta misma página y sigue los pasos. Con tu cuenta, podrás almacenar todos tus datos de juego. Sin iniciar sesión, solo podrás salir del juego o ver el Top 10 de mejores puntuaciones.
+    </p>
+</div>
+
+        <div class="image-left">
            <img src="/Juego/PanelInicial.PNG" alt="Panel Inicial">
         
             <p>Al abrir el juego, verás un panel donde necesitas iniciar sesión para jugar. Para crear una cuenta, ve a la sección 'Registrarse' en esta misma página y sigue los pasos. Con tu cuenta, podrás almacenar todos tus datos de juego. Sin iniciar sesión, solo podrás salir del juego o ver el Top 10 de mejores puntuaciones.</p>
         </div>
         <div class="image-right">
             <p>Una vez que inicies sesión, el juego te llevará a otro panel con los diferentes temas disponibles. Como el juego se basa en niveles y temas, al principio solo tendrás un tema desbloqueado. Esto se indicará con un mensaje en la pantalla.</p>
-            <img src="/imagenes/Juego/PanelTop10.png" alt="Panel Top 10">
+            <img src="/Juego/PanelTop10.png" alt="Panel Top 10">
         </div>
         <div class="image-centered">
-            <img src="/imagenes/Juego/Desbloqueo.png" alt="Desbloqueo">
+            <img src="/Juego/Desbloqueo.png" alt="Desbloqueo">
         </div>
         <div class="image-group">
-            <img src="/imagenes/Juego/1TemasBloqueados.png" alt="Tema 1 Bloqueado">
-            <img src="/imagenes/Juego/2TemasBloqueados.png" alt="Tema 2 Bloqueado">
-            <img src="/imagenes/Juego/3TemasBloqueados.png" alt="Tema 3 Bloqueado">
-            <img src="/imagenes/Juego/4TemasBloqueados.png" alt="Tema 4 Bloqueado">
+            <img src="/Juego/1TemasBloqueados.png" alt="Tema 1 Bloqueado">
+            <img src="/Juego/2TemasBloqueados.png" alt="Tema 2 Bloqueado">
+            <img src="/Juego/3TemasBloqueados.png" alt="Tema 3 Bloqueado">
+            <img src="/Juego/4TemasBloqueados.png" alt="Tema 4 Bloqueado">
         </div>
         <div class="text-section">
             <p>Para desbloquear nuevos temas, necesitas responder correctamente a 9 preguntas del tema actual. Cada panel de preguntas tiene tres secciones: arriba, en el medio y abajo.</p>
@@ -65,9 +72,9 @@
             <img src="/imagenes/Juego/Pregunta.png" alt="Pregunta">
         </div>
         <div class="small-image-group">
-            <img src="/imagenes/Juego/TiempoTerminado.PNG" alt="Tiempo Terminado">
-            <img src="/imagenes/Juego/2vidas.PNG" alt="2 Vidas">
-            <img src="/imagenes/Juego/1 vida.PNG" alt="1 Vida">
+            <img src="/Juego/TiempoTerminado.PNG" alt="Tiempo Terminado">
+            <img src="/Juego/2vidas.PNG" alt="2 Vidas">
+            <img src="/Juego/1 vida.PNG" alt="1 Vida">
         </div>
         <div class="text-section">
             <p>Sección Media:
@@ -76,9 +83,9 @@
                 Dos botones: 'Volver' para regresar al panel de elección de temas, el cual si algún tema ha sido superado y se quiere volver a acceder ahí, no se puede porque el tema se bloquea y aparece un mensaje indicando que el tema ha sido superado, y 'Corregir' para comprobar tu respuesta. Si la respuesta es incorrecta, verás cuál era la correcta.</p>
         </div>
         <div class="small-image-group">
-            <img src="/imagenes/Juego/PreguntaCorrecta.png" alt="Pregunta Correcta">
-            <img src="/imagenes/Juego/PreguntaIncorrecta.png" alt="Pregunta Incorrecta">
-            <img src="/imagenes/Juego/TemaSuperado.png" alt="Tema Superado">
+            <img src="/Juego/PreguntaCorrecta.png" alt="Pregunta Correcta">
+            <img src="/Juego/PreguntaIncorrecta.png" alt="Pregunta Incorrecta">
+            <img src="/Juego/TemaSuperado.png" alt="Tema Superado">
         </div>
         <div class="text-section">
             <p>Final del Juego:
