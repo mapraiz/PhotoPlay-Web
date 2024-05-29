@@ -1,12 +1,12 @@
 <?php
 require_once 'bbdd.php';
-
+var_dump("ostia1");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
-
+    var_dump("ostia2");
     $conn = connect_database();
-
+    var_dump("ostia3");
     $user = get_user($conn, $username, $password);
 
     if ($user) {
