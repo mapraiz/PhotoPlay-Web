@@ -12,7 +12,7 @@
     <title>Preguntados</title>
 </head>
 <body class="text-center">
-    
+    //hola
 <?php session_start(); ?>
 
 <header>
