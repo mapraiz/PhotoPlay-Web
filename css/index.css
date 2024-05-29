@@ -5,6 +5,7 @@ html, body {
 }
 header{
     background-color:#685bd9; 
+    color: #685bd9;
 }
 body {
     display: flex;
