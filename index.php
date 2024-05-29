@@ -37,7 +37,7 @@
             <div class="col-lg text-white text-wrap">
               <h2 class="text-left text-decoration-underline">Preguntados</h2>
               <p class="lh-lg">Preguntados es un juego en el que tus conocimientos de DAM se pondran a prueba. Compite con otros jugadores para conseguir la puntuación mas alta. 
-                Puedes contestar a todas las preguntas correctamente?
+                ¿Puedes contestar a todas las preguntas correctamente?
               </p>
             </div>
            
