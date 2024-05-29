@@ -62,7 +62,7 @@
                         </div>
 
                         <div>
-                            <p class="mb-0">Don't have an account? <a href="registro.php" class="text-white">Sign Up</a></p>
+                            <p class="mb-0">Do you have an account? <a href="login.php" class="text-white">Login</a></p>
                         </div>
 
                     </div>
