@@ -46,6 +46,10 @@
                                     <input type="password" id="typePasswordX" name="password" class="form-control form-control-lg" required />
                                     <label class="form-label" for="typePasswordX">Password</label>
                                 </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input type="password" id="typePasswordX" name="password" class="form-control form-control-lg" required />
+                                    <label class="form-label" for="typePasswordX">Repeat Password</label>
+                                </div>
 
                                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
                             </form>
