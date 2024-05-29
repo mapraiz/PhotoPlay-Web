@@ -37,7 +37,6 @@ header nav a:hover {
 .footer {
     background-color: #000000; /* color de fondo para el pie de página */
     padding: 10px 0;
-    width: 100%;
     text-align: center;
     margin-top: auto;
     display: flex;
