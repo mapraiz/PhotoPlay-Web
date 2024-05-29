@@ -60,3 +60,61 @@ header nav a:hover {
     width: 30px;
     height: 30px;
 }
+
+
+body {
+    font-family: Arial, sans-serif;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.image-left {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.image-left img {
+    max-width: 30%;
+    margin-right: 20px;
+}
+.image-right {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+}
+.image-right img {
+    max-width: 30%;
+    margin-left: 20px;
+}
+.image-centered {
+    text-align: center;
+    width: 100%;
+}
+.image-centered img {
+    max-width: 100%;
+    height: auto;
+}
+.image-group {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.image-group img {
+    max-width: 23%;
+}
+.small-image-group {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.small-image-group img {
+    max-width: 30%;
+}
+.text-section {
+    width: 100%;
+    margin-bottom: 20px;
+}
