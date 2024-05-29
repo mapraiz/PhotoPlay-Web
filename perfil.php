@@ -21,7 +21,7 @@
                 
             
                 <li class="nav-item px-5"><a class="text-white text-decoration-none " style="font-size: 200%"  href="leaderboard.php">Leaderboard</a></li>
-                <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%"   href="registro.php">Register</a> </li>
+                <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%"   href="registro.php">Registro</a> </li>
                 <li class="nav-item px-5"><a class="text-white text-decoration-none" style="font-size: 200%"   href="login.php">Login</a></li>
                 
                 
@@ -35,7 +35,14 @@
 <main role="main" class="innercover">
     <div class="container-fluid bg-dark" >
         <div class="text-left">
-            <h2 style="display:inline" id="username">Username</h2>
+            <?php
+                session_start();
+                $id_usuario=$_GET['user'];
+                include_once "bbdd.php";
+                $user=get_current_user($id_usuario);
+                echo "<h2 style='display:inline' id='username'>Username</h2>"
+            ?>
+            
             <float></float>
             <button type="button" class="btn btn-primary btn-sm" id="editUsername">Editar</button>
             <div id="usernameEdit">
@@ -45,7 +52,7 @@
                 </form>
             </div>
             <hr>
-            <h3>email</h3>
+            
         </div>
 
         <div class="container-lg" style="background-color: #685bd9; margin-top: 2%; "  id="user-scores">
@@ -62,6 +69,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        include_once "bbdd.php";
+                        $scores=get_scores_user($id_usuario);
+                        for($i=0; $i<sizeof($scores);$i++){
+                            echo "<tr class='score-row'>";
+                            echo "<td>".$scores[$i]['puntuacion']."</td>";
+                            echo "<td>".$scores[$i]['fecha']."</td>";
+                            echo "</tr>"
+                            
+                        }
+                        ?>
+
                         <tr class="score-row">
                             <td>
                                 prueba
