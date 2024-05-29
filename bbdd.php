@@ -192,6 +192,8 @@ function get_user($username, $password) {
         return false;
     }
 
+   
+
     $row = oci_fetch_assoc($stmt);
     oci_free_statement($stmt);
     oci_close($conn);
